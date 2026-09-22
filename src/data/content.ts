@@ -28,8 +28,8 @@
  *   certifications.resumeOnly[]        → resume-only lines without certificate images
  *   Badge artwork: public/badges/<id>.png — add/remove file with badges[] / featured[]
  *   Management certs: public/certificates/<slug>.jpg — add/remove file with management[]
- *   To add a Credly badge: download image to public/badges/, add entry to badges[] (and featured[] if desired)
- *   To remove: delete the entry (and optionally the file under public/badges/)
+ *   To add a Credly badge: download image to public/badges/, add entry to badges[] (and featured[] if desired); bump credlyCount
+ *   To remove: delete the entry (and optionally the file under public/badges/); lower credlyCount
  *
  * Experience / skills / work / writing / mentoring
  *   experience[]                       → add a role object, or delete one to remove
@@ -237,7 +237,7 @@ export const certifications: {
   management: ManagementCert[];
   resumeOnly: ResumeCert[];
 } = {
-  credlyCount: 40,
+  credlyCount: 41,
   credlyProfile: "https://www.credly.com/users/aritrade/badges",
   featured: [
     {
@@ -577,6 +577,12 @@ export const certifications: {
       issued: "2021-01-20",
       image: "/badges/04dcd4ec-7992-4ff1-8962-6aa9fd7a7487.png",
       url: "https://www.credly.com/badges/04dcd4ec-7992-4ff1-8962-6aa9fd7a7487/public_url",
+    },
+    {
+      name: "Microsoft Certified: Azure Fundamentals",
+      issuer: "Microsoft",
+      image: "/badges/d73e8b7f-2407-4a24-a4fd-616e1d1fff20.png",
+      url: "https://www.credly.com/badges/d73e8b7f-2407-4a24-a4fd-616e1d1fff20",
     },
   ],
   /** Management / product certificates with real artwork (not Credly) */
