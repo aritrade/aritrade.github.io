@@ -41,6 +41,8 @@
  * Experience / skills / work / writing / mentoring
  *   experience[]                       → add a role object, or delete one to remove
  *   skills[]                           → skill groups
+ *   recommendations[]                  → LinkedIn recommendations (verbatim quotes only)
+ *     name, designation (current LinkedIn title), quote, url?; initials used if no public photo
  *   projects[]                         → Applied AI Projects (GitHub work cards + optional demos)
  *     To add demo media: drop a file in public/work/ (gif or mp4), set project.demo
  *       { src, kind: "gif"|"video", poster? } — poster recommended for reduced-motion / off-screen
@@ -829,6 +831,39 @@ export const mentoring = {
   ],
 } as const;
 
+/**
+ * LinkedIn recommendations received (public profile section).
+ * Quotes are verbatim from https://www.linkedin.com/in/itsmearitrade — do not invent.
+ * Designations are the recommender’s current LinkedIn role/headline as retrieved.
+ */
+export type Recommendation = {
+  name: string;
+  designation: string;
+  quote: string;
+  url?: string;
+  /** Optional avatar initials when no public photo is available */
+  initials: string;
+};
+
+export const recommendations: Recommendation[] = [
+  {
+    name: "Cathy Lareau",
+    designation: "Director, Americas Customer Success · Veeam Software",
+    initials: "CL",
+    url: "https://www.linkedin.com/in/cathy-lareau",
+    quote:
+      "I had the pleasure of managing Aritra when he joined Veeam as the APJ region’s first and only Onboarding Engineer during our global expansion. He embodies the qualities I look for in field engineers: strong technical ability, sharp critical thinking, excellent interpersonal skills, humility, a tireless work ethic, and a genuine passion for helping and connecting with others.\n\nHe quickly mastered our products and took the initiative to build the processes, relationships, and assets that established the new program in the region. He collaborates effectively across the organization and with customers, and he communicates exceptionally well—in person, in writing, and online.\n\nIn addition to his customer work, Aritra regularly presented to internal leaders and field teams to articulate the team’s purpose, value, and engagement model. He is comfortable presenting at all levels and has a keen eye for identifying improvements and closing gaps.\n\nI’m confident Aritra will thrive in a range of roles—including Sales, Professional Services, Customer Success Engineering, and management. I recommend him without reservation to any organization seeking a high-impact engineer and collaborative team member.",
+  },
+  {
+    name: "Danish Bagdadi",
+    designation: "Tech Support Executive · Softcell Technologies Global Pvt. Ltd.",
+    initials: "DB",
+    url: "https://www.linkedin.com/in/danish-bagdadi-561b7918",
+    quote:
+      "I had the pleasure of working closely with Aritra during his time as a Technical Account Manager at Nutanix, and he stands out as a true advocate for customer success.\n\nAritra possesses a rare combination of deep technical expertise in HCI and cloud infrastructure paired with the strategic mindset needed to navigate complex enterprise environments. He didn't just manage accounts; he became a trusted advisor to his clients. I was particularly impressed by his ability to proactively identify potential roadblocks in high-stakes deployments and resolve them before they impacted the business.\n\nHe excels at translating technical challenges into clear, actionable business outcomes for stakeholders at all levels. Any organization looking for a TAM who is as skilled at architecting solutions as they are at building long-term partnerships would find Aritra to be an invaluable asset.",
+  },
+];
+
 export const education = {
   degree: "B.E. Electronics & Communication",
   school: "CMR Institute of Technology",
@@ -889,6 +924,7 @@ export const nav = [
   { id: "about", label: "About" },
   { id: "experience", label: "Experience" },
   { id: "skills", label: "Skills" },
+  { id: "recommendations", label: "Recommendations" },
   { id: "certifications", label: "Certifications" },
   { id: "work", label: "Applied AI Projects" },
   { id: "writing", label: "Writing" },
@@ -918,38 +954,44 @@ export const sections = [
     deck: "Tools and practices from the resume — customer success delivery paired with applied AI and infrastructure depth.",
   },
   {
-    id: "certifications",
+    id: "recommendations",
     numeral: "04",
+    heading: "Recommendations",
+    deck: "LinkedIn recommendations from people who have worked with Aritra — quoted as written.",
+  },
+  {
+    id: "certifications",
+    numeral: "05",
     heading: "Certifications",
     deck: null as string | null, // built in App from certifications.credlyCount
   },
   {
     id: "work",
-    numeral: "05",
+    numeral: "06",
     heading: "Applied AI Projects",
     deck: "Public GitHub projects with substance. Empty or undescribed repos omitted.",
   },
   {
     id: "writing",
-    numeral: "06",
+    numeral: "07",
     heading: "Writing",
     deck: null as string | null, // Medium link rendered in App
   },
   {
     id: "mentoring",
-    numeral: "07",
+    numeral: "08",
     heading: "Mentoring & office hours",
     deck: null as string | null, // uses mentoring.tagline
   },
   {
     id: "gallery",
-    numeral: "08",
+    numeral: "09",
     heading: "In frame",
     deck: "A short filmstrip of Aritra — portrait, on tour, and in the room.",
   },
   {
     id: "contact",
-    numeral: "09",
+    numeral: "10",
     heading: "Contact",
     deck: "Book a conversation, or reach out directly.",
   },

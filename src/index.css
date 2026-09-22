@@ -1193,6 +1193,105 @@ button:focus-visible {
   line-height: 1.6;
 }
 
+/* ── Recommendations ────────────────────────────────────── */
+
+.reco-grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+@media (min-width: 900px) {
+  .reco-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.75rem;
+  }
+}
+
+.reco-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1.35rem;
+  padding: 1.75rem 1.6rem 1.85rem;
+  background:
+    linear-gradient(165deg, rgba(255, 252, 247, 0.92) 0%, rgba(244, 235, 225, 0.55) 100%),
+    var(--ivory);
+  border: 1px solid rgba(20, 17, 14, 0.1);
+  border-radius: 2px;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.65) inset,
+    0 18px 40px rgba(20, 17, 14, 0.06);
+  min-height: 100%;
+}
+
+.reco-card-top {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.reco-initials {
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  width: 2.85rem;
+  height: 2.85rem;
+  border-radius: 50%;
+  font-family: var(--font-mark);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--ink-0);
+  background: linear-gradient(145deg, var(--platinum-bright), var(--platinum));
+  border: 1px solid rgba(20, 17, 14, 0.12);
+}
+
+.reco-who h3 {
+  margin: 0 0 0.35rem;
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 550;
+  letter-spacing: -0.015em;
+  color: var(--text-on-ivory);
+}
+
+.reco-who h3 a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.reco-who h3 a:hover {
+  color: var(--oxblood);
+}
+
+.reco-designation {
+  margin: 0;
+  font-family: var(--font-mark);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  line-height: 1.45;
+  color: rgba(90, 82, 72, 0.95);
+}
+
+.reco-quote {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.reco-quote p {
+  margin: 0 0 0.85rem;
+  font-family: var(--font-display);
+  font-size: 0.98rem;
+  font-weight: 400;
+  line-height: 1.55;
+  color: var(--text-on-ivory);
+}
+
+.reco-quote p:last-child {
+  margin-bottom: 0;
+}
+
 /* ── Certifications / badge grid ────────────────────────── */
 
 .badge-strip-label {

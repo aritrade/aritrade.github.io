@@ -18,6 +18,7 @@ import {
   nav,
   profile,
   projects,
+  recommendations,
   sections,
   skills,
   ui,
@@ -594,6 +595,52 @@ export default function App() {
                 </article>
               ))}
             </Reveal>
+          </div>
+        </section>
+
+        {/* RECOMMENDATIONS */}
+        <section id="recommendations" className="band band-parchment">
+          <div className="band-inner">
+            <Reveal as="header" className="chapter-head" reducedMotion={reducedMotion}>
+              <p className="chapter-num">{sectionById("recommendations").numeral}</p>
+              <div>
+                <h2>{sectionById("recommendations").heading}</h2>
+                <p className="chapter-deck">{sectionById("recommendations").deck}</p>
+              </div>
+            </Reveal>
+
+            <div className="reco-grid">
+              {recommendations.map((r, i) => (
+                <Reveal
+                  as="article"
+                  key={r.name}
+                  className="reco-card"
+                  reducedMotion={reducedMotion}
+                  delay={i * 70}
+                >
+                  <div className="reco-card-top">
+                    <span className="reco-initials" aria-hidden="true">
+                      {r.initials}
+                    </span>
+                    <div className="reco-who">
+                      {r.url ? (
+                        <h3>
+                          <ExternalLink href={r.url}>{r.name}</ExternalLink>
+                        </h3>
+                      ) : (
+                        <h3>{r.name}</h3>
+                      )}
+                      <p className="reco-designation">{r.designation}</p>
+                    </div>
+                  </div>
+                  <blockquote className="reco-quote">
+                    {r.quote.split("\n\n").map((para, pi) => (
+                      <p key={pi}>{para}</p>
+                    ))}
+                  </blockquote>
+                </Reveal>
+              ))}
+            </div>
           </div>
         </section>
 
