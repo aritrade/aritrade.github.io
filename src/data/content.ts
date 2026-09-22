@@ -41,7 +41,7 @@
  * Experience / skills / work / writing / mentoring
  *   experience[]                       → add a role object, or delete one to remove
  *   skills[]                           → skill groups
- *   projects[]                         → selected GitHub work
+ *   projects[]                         → Applied AI Projects (GitHub work cards + optional demos)
  *     To add demo media: drop a file in public/work/ (gif or mp4), set project.demo
  *       { src, kind: "gif"|"video", poster? } — poster recommended for reduced-motion / off-screen
  *   writing[]                          → Medium pieces
@@ -903,7 +903,7 @@ export const nav = [
   { id: "experience", label: "Experience" },
   { id: "skills", label: "Skills" },
   { id: "certifications", label: "Certifications" },
-  { id: "work", label: "Work" },
+  { id: "work", label: "Applied AI Projects" },
   { id: "writing", label: "Writing" },
   { id: "mentoring", label: "Mentoring" },
   { id: "gallery", label: "In frame" },
@@ -939,7 +939,7 @@ export const sections = [
   {
     id: "work",
     numeral: "05",
-    heading: "Selected work",
+    heading: "Applied AI Projects",
     deck: "Public GitHub projects with substance. Empty or undescribed repos omitted.",
   },
   {

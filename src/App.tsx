@@ -62,7 +62,7 @@ function ExternalLink({
   );
 }
 
-/** GIF or muted looping video for Selected work cards — pauses off-screen; respects reduced motion. */
+/** GIF or muted looping video for Applied AI Projects cards — pauses off-screen; respects reduced motion. */
 function WorkDemoMedia({
   demo,
   alt,
