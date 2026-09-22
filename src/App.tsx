@@ -585,9 +585,9 @@ export default function App() {
             <Reveal className="mgmt-certs" reducedMotion={reducedMotion} delay={100}>
               <p className="badge-strip-label">Management certifications</p>
               <ul className="mgmt-cert-list">
-                {certifications.management.map((c) => (
-                  <li key={c.url}>
-                    <ExternalLink className="mgmt-cert-card" href={c.url}>
+                {certifications.management.map((c) => {
+                  const body = (
+                    <>
                       <span className="mgmt-cert-frame">
                         <img src={c.image} alt={c.name} loading="lazy" />
                       </span>
@@ -597,11 +597,31 @@ export default function App() {
                           {c.issuer}
                           {c.issued ? ` · ${c.issued}` : ""}
                         </span>
-                        <span className="mgmt-cert-verify">Verify credential</span>
+                        {c.url ? (
+                          <span className="mgmt-cert-verify">Verify credential</span>
+                        ) : null}
                       </span>
-                    </ExternalLink>
-                  </li>
-                ))}
+                    </>
+                  );
+                  return (
+                    <li key={c.image}>
+                      {c.url ? (
+                        <ExternalLink className="mgmt-cert-card" href={c.url}>
+                          {body}
+                        </ExternalLink>
+                      ) : (
+                        <a
+                          className="mgmt-cert-card"
+                          href={c.image}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          {body}
+                        </a>
+                      )}
+                    </li>
+                  );
+                })}
               </ul>
             </Reveal>
 

@@ -225,7 +225,8 @@ export type ManagementCert = {
   issuer: string;
   issued?: string;
   image: string;
-  url: string;
+  /** Public verification URL when the document provides one */
+  url?: string;
 };
 
 export const certifications: {
@@ -586,6 +587,13 @@ export const certifications: {
       issued: "2024-01-11",
       image: "/certificates/product-management.jpg",
       url: "https://credential.productleadership.com/credential/bf1190a0-c3e1-41ed-9b63-63caa4ed5809",
+    },
+    {
+      name: "Successful Negotiation: Essential Strategies and Skills",
+      issuer: "University of Michigan (via Coursera)",
+      issued: "2026-07-14",
+      image: "/certificates/negotiation-michigan.jpg",
+      url: "https://coursera.org/verify/6SBIES87A046",
     },
   ],
   /** Listed on resume; no matching Credly badge — text only, no fake images */
