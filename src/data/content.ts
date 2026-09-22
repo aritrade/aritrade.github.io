@@ -856,7 +856,7 @@ export const recommendations: Recommendation[] = [
   },
   {
     name: "Prajnya Pandey",
-    designation: "Leading Customers to Success | Customer Obsessed | IIM Lucknow",
+    designation: "Manager - Technical Success Manager, Customer Success at Zscaler (ex-Manager, Technical Account Management at Nutanix)",
     initials: "PP",
     url: "https://www.linkedin.com/in/prajnya-pandey/",
     quote:
@@ -864,7 +864,7 @@ export const recommendations: Recommendation[] = [
   },
   {
     name: "Suresh Patare",
-    designation: "Director – Professional Services | Enterprise Kubernetes & AI Platforms",
+    designation: "Director – Professional Services | Enterprise Kubernetes & AI Platforms at Nutanix",
     initials: "SP",
     url: "https://www.linkedin.com/in/suresh-patare-b6828b33/",
     quote:
@@ -872,7 +872,7 @@ export const recommendations: Recommendation[] = [
   },
   {
     name: "Girivaru Tarun",
-    designation: "Product Manager",
+    designation: "Senior Product Manager (NCM Security Central) at Nutanix",
     initials: "GT",
     url: "https://www.linkedin.com/in/girivaru-tarun-b4907b6a/",
     quote:
@@ -889,7 +889,7 @@ export const recommendations: Recommendation[] = [
   {
     name: "Khalid Parkar",
     designation:
-      "Solution Engineering@Nutanix | Hybrid Cloud | 8X Nutanix Certified | 1X Vmware Certified",
+      "Manager, Technical Account Management at Nutanix (ex-Senior Systems Engineer (Presales) at Nutanix)",
     initials: "KP",
     url: "https://www.linkedin.com/in/khalid-parkar-422b6022/",
     quote:
@@ -906,7 +906,7 @@ export const recommendations: Recommendation[] = [
   {
     name: "Tanmay Bhandge",
     designation:
-      "Technology Leader | Enterprise AI Architect | AI Infrastructure, Agentic Systems & Platform Engineering | Helping Organizations Deploy AI Securely at Scale",
+      "Professional Services Manager at Nutanix (ex-Staff Consulting Architect at Nutanix)",
     initials: "TB",
     url: "https://www.linkedin.com/in/tanmay-bhandge/",
     quote:
