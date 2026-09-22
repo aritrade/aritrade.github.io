@@ -548,39 +548,63 @@ export default function App() {
               </div>
             </Reveal>
 
-            <Reveal className="badge-featured" reducedMotion={reducedMotion}>
-              <p className="badge-strip-label">Featured</p>
-              <ul className="badge-grid badge-grid-featured">
-                {certifications.featured.map((c) => (
-                  <li key={`featured-${c.url}`}>
-                    <ExternalLink className="badge-card" href={c.url}>
-                      <span className="badge-art">
-                        <img src={c.image} alt={c.name} loading="lazy" />
-                      </span>
-                      <span className="badge-name">{c.name}</span>
-                      <span className="badge-issuer">{c.issuer}</span>
-                    </ExternalLink>
-                  </li>
-                ))}
-              </ul>
-            </Reveal>
-
-            <Reveal className="badge-all" reducedMotion={reducedMotion} delay={80}>
-              <p className="badge-strip-label">All credentials</p>
-              <ul className="badge-grid">
-                {certifications.badges.map((c) => (
-                  <li key={c.url}>
-                    <ExternalLink className="badge-card" href={c.url}>
-                      <span className="badge-art">
-                        <img src={c.image} alt={c.name} loading="lazy" />
-                      </span>
-                      <span className="badge-name">{c.name}</span>
-                      <span className="badge-issuer">{c.issuer}</span>
-                    </ExternalLink>
-                  </li>
-                ))}
-              </ul>
-            </Reveal>
+            {(
+              [
+                {
+                  label: "Featured",
+                  items: certifications.featured,
+                  featured: true,
+                },
+                {
+                  label: "VMware (Broadcom) certifications",
+                  items: certifications.vmware,
+                },
+                {
+                  label: "Nutanix Certifications",
+                  items: certifications.nutanix,
+                },
+                {
+                  label: "Other credentials",
+                  items: certifications.badges,
+                },
+              ] as const
+            ).map((group, gi) =>
+              group.items.length === 0 ? null : (
+                <Reveal
+                  key={group.label}
+                  className={
+                    "featured" in group && group.featured
+                      ? "badge-featured"
+                      : "badge-all"
+                  }
+                  reducedMotion={reducedMotion}
+                  delay={gi * 40}
+                >
+                  <p className="badge-strip-label">{group.label}</p>
+                  <ul
+                    className={
+                      "featured" in group && group.featured
+                        ? "badge-grid badge-grid-featured"
+                        : "badge-grid"
+                    }
+                  >
+                    {group.items.map((c) => (
+                      <li
+                        key={`${group.label}-${c.url}`}
+                      >
+                        <ExternalLink className="badge-card" href={c.url}>
+                          <span className="badge-art">
+                            <img src={c.image} alt={c.name} loading="lazy" />
+                          </span>
+                          <span className="badge-name">{c.name}</span>
+                          <span className="badge-issuer">{c.issuer}</span>
+                        </ExternalLink>
+                      </li>
+                    ))}
+                  </ul>
+                </Reveal>
+              ),
+            )}
 
             {(
               [
@@ -604,7 +628,7 @@ export default function App() {
                   key={group.label}
                   className="mgmt-certs"
                   reducedMotion={reducedMotion}
-                  delay={100 + gi * 20}
+                  delay={160 + gi * 20}
                 >
                   <p className="badge-strip-label">{group.label}</p>
                   <ul className="mgmt-cert-list">
@@ -657,7 +681,7 @@ export default function App() {
             )}
 
             {certifications.resumeOnly.length > 0 ? (
-              <Reveal className="resume-only" reducedMotion={reducedMotion} delay={120}>
+              <Reveal className="resume-only" reducedMotion={reducedMotion} delay={240}>
                 <h3>Also listed on the resume</h3>
                 <p>
                   No matching certificate artwork — shown as text only, without
@@ -674,7 +698,7 @@ export default function App() {
               </Reveal>
             ) : null}
 
-            <Reveal className="resume-only" reducedMotion={reducedMotion} delay={140}>
+            <Reveal className="resume-only" reducedMotion={reducedMotion} delay={260}>
               <ExternalLink
                 className="btn btn-pill btn-ghost-light"
                 href={certifications.credlyProfile}
