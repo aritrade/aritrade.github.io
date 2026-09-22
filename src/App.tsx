@@ -582,6 +582,29 @@ export default function App() {
               </ul>
             </Reveal>
 
+            <Reveal className="mgmt-certs" reducedMotion={reducedMotion} delay={100}>
+              <p className="badge-strip-label">Management certifications</p>
+              <ul className="mgmt-cert-list">
+                {certifications.management.map((c) => (
+                  <li key={c.url}>
+                    <ExternalLink className="mgmt-cert-card" href={c.url}>
+                      <span className="mgmt-cert-frame">
+                        <img src={c.image} alt={c.name} loading="lazy" />
+                      </span>
+                      <span className="mgmt-cert-caption">
+                        <span className="mgmt-cert-name">{c.name}</span>
+                        <span className="mgmt-cert-meta">
+                          {c.issuer}
+                          {c.issued ? ` · ${c.issued}` : ""}
+                        </span>
+                        <span className="mgmt-cert-verify">Verify credential</span>
+                      </span>
+                    </ExternalLink>
+                  </li>
+                ))}
+              </ul>
+            </Reveal>
+
             <Reveal className="resume-only" reducedMotion={reducedMotion} delay={120}>
               <h3>Also listed on the resume</h3>
               <p>

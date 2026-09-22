@@ -37,6 +37,7 @@ All visible copy lives in **`src/data/content.ts`**. Ordinary updates do not nee
 | Jobs | `experience` — push a role object to add; delete an object to remove |
 | Skills | `skills` |
 | Certifications (Credly badge images) | `certifications.badges`, `certifications.featured`, images in `public/badges/` |
+| Management certifications | `certifications.management`, images in `public/certificates/` |
 | Resume-only certs (no Credly image) | `certifications.resumeOnly` |
 | Projects | `projects` |
 | Writing | `writing` |

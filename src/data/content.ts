@@ -24,8 +24,10 @@
  * Certifications
  *   certifications.badges[]            → Credly badges (name, image, url, issuer, issued)
  *   certifications.featured[]          → highlight row (subset of real Credly badges)
- *   certifications.resumeOnly[]        → resume-only lines without Credly images
- *   Badge artwork lives in public/badges/<id>.png — add/remove file when adding/removing a badge
+ *   certifications.management[]        → non-Credly certificates with artwork (image + verify url)
+ *   certifications.resumeOnly[]        → resume-only lines without certificate images
+ *   Badge artwork: public/badges/<id>.png — add/remove file with badges[] / featured[]
+ *   Management certs: public/certificates/<slug>.jpg — add/remove file with management[]
  *   To add a Credly badge: download image to public/badges/, add entry to badges[] (and featured[] if desired)
  *   To remove: delete the entry (and optionally the file under public/badges/)
  *
@@ -217,11 +219,21 @@ export type ResumeCert = {
   issuer: string;
 };
 
+/** Non-Credly certificate with real artwork (e.g. Institute of Product Leadership) */
+export type ManagementCert = {
+  name: string;
+  issuer: string;
+  issued?: string;
+  image: string;
+  url: string;
+};
+
 export const certifications: {
   credlyCount: number;
   credlyProfile: string;
   featured: CredlyBadge[];
   badges: CredlyBadge[];
+  management: ManagementCert[];
   resumeOnly: ResumeCert[];
 } = {
   credlyCount: 40,
@@ -566,6 +578,16 @@ export const certifications: {
       url: "https://www.credly.com/badges/04dcd4ec-7992-4ff1-8962-6aa9fd7a7487/public_url",
     },
   ],
+  /** Management / product certificates with real artwork (not Credly) */
+  management: [
+    {
+      name: "International Certificate in Product Management",
+      issuer: "Institute of Product Leadership Inc., USA",
+      issued: "2024-01-11",
+      image: "/certificates/product-management.jpg",
+      url: "https://credential.productleadership.com/credential/bf1190a0-c3e1-41ed-9b63-63caa4ed5809",
+    },
+  ],
   /** Listed on resume; no matching Credly badge — text only, no fake images */
   resumeOnly: [
     {
@@ -575,10 +597,6 @@ export const certifications: {
     {
       name: "Generative AI with LLMs",
       issuer: "DeepLearning.AI (per resume)",
-    },
-    {
-      name: "International Certificate in Product Management",
-      issuer: "Institute of Product Leadership (5-month, faculty-led)",
     },
   ],
 };
