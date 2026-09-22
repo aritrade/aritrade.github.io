@@ -30,6 +30,7 @@
  *   certifications.resumeOnly[]          → text-only lines when no certificate artwork exists
  *   To add a Credly badge: save PNG under public/badges/, add to badges[] (and featured[] if desired), bump credlyCount
  *   To add a certificate image: save under public/certificates/, add to ai[] / aiSecurity[] / management[] / wellbeing[]
+ *     (omit url when there is no public verify link — the card will open the image larger)
  *   To remove: delete the entry (and optionally the file); adjust credlyCount for Credly badges
  *
  * Experience / skills / work / writing / mentoring
@@ -625,6 +626,11 @@ export const certifications: {
       issued: "2025-02-10",
       image: "/certificates/generative-ai-product-managers.jpg",
       url: "https://www.linkedin.com/learning/certificates/ceded340bad9969f1e0f1a5b57db188e69630761d54c812b8b69cc9805a2ee86",
+    },
+    {
+      name: "Artificial Intelligence Micro-Certification",
+      issuer: "Product School, Inc.",
+      image: "/certificates/ai-micro-cert-product-school.jpg",
     },
   ],
   /** AI security credentials with real artwork */

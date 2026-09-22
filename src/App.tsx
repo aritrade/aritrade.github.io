@@ -624,7 +624,11 @@ export default function App() {
                               <span className="mgmt-cert-verify">
                                 Verify credential
                               </span>
-                            ) : null}
+                            ) : (
+                              <span className="mgmt-cert-verify">
+                                View certificate
+                              </span>
+                            )}
                           </span>
                         </>
                       );
