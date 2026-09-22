@@ -39,6 +39,7 @@ All visible copy lives in **`src/data/content.ts`**. Ordinary updates do not nee
 | Certifications (Credly — VMware) | `certifications.vmware`, images in `public/badges/` |
 | Certifications (Credly — Nutanix) | `certifications.nutanix`, images in `public/badges/` |
 | Certifications (Credly — Cloud Native) | `certifications.cloudNative`, images in `public/badges/` |
+| Certifications (Credly — Data Protection & DR) | `certifications.dataProtection`, images in `public/badges/` |
 | Certifications (Credly — other) | `certifications.badges`, `certifications.featured`, images in `public/badges/` |
 | Management certifications | `certifications.management`, images in `public/certificates/` |
 | AI certifications | `certifications.ai`, images in `public/certificates/` |

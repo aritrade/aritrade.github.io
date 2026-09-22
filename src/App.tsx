@@ -568,6 +568,10 @@ export default function App() {
                   items: certifications.cloudNative,
                 },
                 {
+                  label: "Data Protection and Disaster Recovery certifications",
+                  items: certifications.dataProtection,
+                },
+                {
                   label: "Other credentials",
                   items: certifications.badges,
                 },

@@ -25,12 +25,14 @@
  *   certifications.vmware[]              → VMware (Broadcom) Credly badges only
  *   certifications.nutanix[]             → Nutanix Credly badges only
  *   certifications.cloudNative[]         → Cloud Native — The Linux Foundation Credly badges only
+ *   certifications.dataProtection[]      → Data Protection & DR — Veeam VMCE and Zerto badges
  *   certifications.badges[] / featured[] → other Credly badges (no duplicates across groups)
  *   Badge images: public/badges/<id>.png
  *   certifications.ai[] / aiSecurity[] / management[] / wellbeing[] → certificate images in public/certificates/
  *   certifications.resumeOnly[]          → text-only lines when no certificate artwork exists
- *   To add a Credly badge: save PNG under public/badges/, add to vmware[] OR nutanix[] OR cloudNative[]
- *     (issuer The Linux Foundation → cloudNative[]) OR badges[] / featured[] for everything else
+ *   To add a Credly badge: save PNG under public/badges/, then file by issuer:
+ *     Broadcom/VMware → vmware[]; Nutanix → nutanix[]; The Linux Foundation → cloudNative[];
+ *     Veeam VMCE or Zerto → dataProtection[]; otherwise badges[] / featured[]
  *     (do not list the same badge in more than one array), bump credlyCount
  *   To add a certificate image: save under public/certificates/, add to ai[] / aiSecurity[] / management[] / wellbeing[]
  *     (omit url when there is no public verify link — the card will open the image larger)
@@ -241,6 +243,7 @@ export const certifications: {
   vmware: CredlyBadge[];
   nutanix: CredlyBadge[];
   cloudNative: CredlyBadge[];
+  dataProtection: CredlyBadge[];
   badges: CredlyBadge[];
   ai: DisplayCert[];
   aiSecurity: DisplayCert[];
@@ -250,7 +253,7 @@ export const certifications: {
 } = {
   credlyCount: 41,
   credlyProfile: "https://www.credly.com/users/aritrade/badges",
-  /** Highlight row — general Credly badges only (not in vendor/cloud-native groups) */
+  /** Highlight row — general Credly badges only (not in vendor groups) */
   featured: [
     {
       name: "Google AI Essentials V1",
@@ -258,13 +261,6 @@ export const certifications: {
       issued: "2025-07-10",
       image: "/badges/61ead383-058a-44d2-be34-febd982202a3.png",
       url: "https://www.credly.com/badges/61ead383-058a-44d2-be34-febd982202a3/public_url",
-    },
-    {
-      name: "Veeam Certified Engineer (VMCE) 2025",
-      issuer: "Veeam",
-      issued: "2025-11-17",
-      image: "/badges/83f3f777-12fb-4ba7-bdb3-3cc4cd7f2ef4.png",
-      url: "https://www.credly.com/badges/83f3f777-12fb-4ba7-bdb3-3cc4cd7f2ef4/public_url",
     },
   ],
   /** VMware (Broadcom) Credly badges — exclusive to this group */
@@ -514,8 +510,15 @@ export const certifications: {
       url: "https://www.credly.com/badges/3b47466b-21ce-40a7-8dba-80d7f317ce0c/public_url",
     },
   ],
-  /** Other Credly badges (not VMware/Nutanix/Linux Foundation; excludes featured) */
-  badges: [
+  /** Data Protection and Disaster Recovery — Veeam VMCE and Zerto Credly badges */
+  dataProtection: [
+    {
+      name: "Veeam Certified Engineer (VMCE) 2025",
+      issuer: "Veeam",
+      issued: "2025-11-17",
+      image: "/badges/83f3f777-12fb-4ba7-bdb3-3cc4cd7f2ef4.png",
+      url: "https://www.credly.com/badges/83f3f777-12fb-4ba7-bdb3-3cc4cd7f2ef4/public_url",
+    },
     {
       name: "Zerto Certified Associate",
       issuer: "Zerto",
@@ -523,6 +526,9 @@ export const certifications: {
       image: "/badges/4a019016-c055-44b0-be07-b6e65114f156.png",
       url: "https://www.credly.com/badges/4a019016-c055-44b0-be07-b6e65114f156/public_url",
     },
+  ],
+  /** Other Credly badges (not in vendor/cloud-native/data-protection groups; excludes featured) */
+  badges: [
     {
       name: "AWS Cloud Quest: Cloud Practitioner - Training Badge",
       issuer: "Amazon Web Services Training and Certification",
