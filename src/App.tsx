@@ -542,47 +542,51 @@ export default function App() {
               <div>
                 <h2>{sectionById("certifications").heading}</h2>
                 <p className="chapter-deck">
-                  {certifications.credlyCount} verified badges on Credly.
-                  Featured below with public badge links.
+                  {certifications.credlyCount} verified badges on Credly — real
+                  artwork below, each linked to the public badge page.
                 </p>
               </div>
             </Reveal>
 
-            <ul className="cred-rail">
-              {certifications.featured.map((c, i) => (
-                <Reveal
-                  as="li"
-                  key={c.name}
-                  reducedMotion={reducedMotion}
-                  delay={Math.min(i * 40, 280)}
-                >
-                  <div>
-                    <p className="cred-name">
-                      {c.url ? (
-                        <ExternalLink href={c.url}>{c.name}</ExternalLink>
-                      ) : (
-                        c.name
-                      )}
-                    </p>
-                    <p className="cred-meta">
-                      {c.issuer}
-                      {c.issued ? ` · ${c.issued}` : ""}
-                    </p>
-                  </div>
-                  {c.url ? (
-                    <ExternalLink className="cred-view" href={c.url}>
-                      {ui.viewBadge}
+            <Reveal className="badge-featured" reducedMotion={reducedMotion}>
+              <p className="badge-strip-label">Featured</p>
+              <ul className="badge-grid badge-grid-featured">
+                {certifications.featured.map((c) => (
+                  <li key={`featured-${c.url}`}>
+                    <ExternalLink className="badge-card" href={c.url}>
+                      <span className="badge-art">
+                        <img src={c.image} alt={c.name} loading="lazy" />
+                      </span>
+                      <span className="badge-name">{c.name}</span>
+                      <span className="badge-issuer">{c.issuer}</span>
                     </ExternalLink>
-                  ) : null}
-                </Reveal>
-              ))}
-            </ul>
+                  </li>
+                ))}
+              </ul>
+            </Reveal>
+
+            <Reveal className="badge-all" reducedMotion={reducedMotion} delay={80}>
+              <p className="badge-strip-label">All credentials</p>
+              <ul className="badge-grid">
+                {certifications.badges.map((c) => (
+                  <li key={c.url}>
+                    <ExternalLink className="badge-card" href={c.url}>
+                      <span className="badge-art">
+                        <img src={c.image} alt={c.name} loading="lazy" />
+                      </span>
+                      <span className="badge-name">{c.name}</span>
+                      <span className="badge-issuer">{c.issuer}</span>
+                    </ExternalLink>
+                  </li>
+                ))}
+              </ul>
+            </Reveal>
 
             <Reveal className="resume-only" reducedMotion={reducedMotion} delay={120}>
               <h3>Also listed on the resume</h3>
               <p>
-                Matching Credly badge pages were not found during research — shown
-                without badge links.
+                No matching Credly badge page — shown as text only, without
+                images.
               </p>
               <ul>
                 {certifications.resumeOnly.map((c) => (

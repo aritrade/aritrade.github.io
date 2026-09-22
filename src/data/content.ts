@@ -21,10 +21,17 @@
  *   about.pullQuote / about.pullQuoteFooter
  *   education.*
  *
- * Experience / skills / certs / work / writing / mentoring
+ * Certifications
+ *   certifications.badges[]            → Credly badges (name, image, url, issuer, issued)
+ *   certifications.featured[]          → highlight row (subset of real Credly badges)
+ *   certifications.resumeOnly[]        → resume-only lines without Credly images
+ *   Badge artwork lives in public/badges/<id>.png — add/remove file when adding/removing a badge
+ *   To add a Credly badge: download image to public/badges/, add entry to badges[] (and featured[] if desired)
+ *   To remove: delete the entry (and optionally the file under public/badges/)
+ *
+ * Experience / skills / work / writing / mentoring
  *   experience[]                       → add a role object, or delete one to remove
  *   skills[]                           → skill groups
- *   certifications.featured[] / .resumeOnly[] / .credlyCount
  *   projects[]                         → selected GitHub work
  *   writing[]                          → Medium pieces
  *   mentoring.*                        → Topmate services + testimonials
@@ -196,125 +203,382 @@ export const skills = {
   ],
 } as const;
 
-/** Featured certifications with Credly public badge URLs where available */
-export type Certification = {
+/** Credly badges — images in public/badges/, links to public Credly pages */
+export type CredlyBadge = {
   name: string;
   issuer: string;
   issued?: string;
-  url?: string;
-  source: "credly" | "resume";
+  image: string;
+  url: string;
+};
+
+export type ResumeCert = {
+  name: string;
+  issuer: string;
 };
 
 export const certifications: {
   credlyCount: number;
   credlyProfile: string;
-  featured: Certification[];
-  resumeOnly: Certification[];
+  featured: CredlyBadge[];
+  badges: CredlyBadge[];
+  resumeOnly: ResumeCert[];
 } = {
   credlyCount: 40,
   credlyProfile: "https://www.credly.com/users/aritrade/badges",
   featured: [
     {
-      name: "Nutanix Certified Master – Multicloud Infrastructure 6",
-      issuer: "Nutanix",
-      issued: "2026-03-31",
-      url: "https://www.credly.com/badges/d370138e-5445-4d9c-82f4-fa6f6fa64033/public_url",
-      source: "credly",
-    },
-    {
-      name: "Nutanix Certified Professional – Artificial Intelligence 6",
+      name: "Nutanix Certified Professional - Artificial Intelligence 6",
       issuer: "Nutanix",
       issued: "2026-05-24",
+      image: "/badges/55b62040-5ae3-4796-b2c7-606f0a08d791.png",
       url: "https://www.credly.com/badges/55b62040-5ae3-4796-b2c7-606f0a08d791/public_url",
-      source: "credly",
-    },
-    {
-      name: "VMware Certified Implementation Expert – Data Center Virtualization 2023 (VCIX-DCV)",
-      issuer: "Broadcom",
-      issued: "2023-05-18",
-      url: "https://www.credly.com/badges/1056c6aa-84e4-46d2-b647-37d52bfc07ab/public_url",
-      source: "credly",
-    },
-    {
-      name: "VMware Certified Advanced Professional – Data Center Virtualization Deploy 2023",
-      issuer: "Broadcom",
-      issued: "2023-05-18",
-      url: "https://www.credly.com/badges/8aa82b17-b773-4787-8f6a-03eed5cd9c4b/public_url",
-      source: "credly",
-    },
-    {
-      name: "VMware Certified Advanced Professional – Data Center Virtualization Design 2022",
-      issuer: "Broadcom",
-      issued: "2022-12-23",
-      url: "https://www.credly.com/badges/faba3387-8853-4d9e-81c8-1e2ab4f8a7c7/public_url",
-      source: "credly",
-    },
-    {
-      name: "VMware Certified Master Specialist – VMware Cloud on AWS 2022",
-      issuer: "Broadcom",
-      issued: "2022-09-04",
-      url: "https://www.credly.com/badges/f4f1bb5a-0b7e-466d-8371-2dec8737b8af/public_url",
-      source: "credly",
-    },
-    {
-      name: "Veeam Certified Engineer (VMCE) 2025",
-      issuer: "Veeam",
-      issued: "2025-11-17",
-      url: "https://www.credly.com/badges/83f3f777-12fb-4ba7-bdb3-3cc4cd7f2ef4/public_url",
-      source: "credly",
-    },
-    {
-      name: "KCNA: Kubernetes and Cloud Native Associate",
-      issuer: "The Linux Foundation",
-      issued: "2026-04-04",
-      url: "https://www.credly.com/badges/3b47466b-21ce-40a7-8dba-80d7f317ce0c/public_url",
-      source: "credly",
-    },
-    {
-      name: "PCA: Prometheus Certified Associate",
-      issuer: "The Linux Foundation",
-      issued: "2026-03-21",
-      url: "https://www.credly.com/badges/d14788aa-e62b-4279-a20c-0096c0455f13/public_url",
-      source: "credly",
     },
     {
       name: "Google AI Essentials V1",
       issuer: "Coursera",
       issued: "2025-07-10",
+      image: "/badges/61ead383-058a-44d2-be34-febd982202a3.png",
       url: "https://www.credly.com/badges/61ead383-058a-44d2-be34-febd982202a3/public_url",
-      source: "credly",
     },
     {
-      name: "Nutanix Certified Professional – Multicloud Infrastructure 7",
+      name: "Nutanix Certified Master - Multicloud Infrastructure 6",
+      issuer: "Nutanix",
+      issued: "2026-03-31",
+      image: "/badges/d370138e-5445-4d9c-82f4-fa6f6fa64033.png",
+      url: "https://www.credly.com/badges/d370138e-5445-4d9c-82f4-fa6f6fa64033/public_url",
+    },
+    {
+      name: "VMware Certified Implementation Expert - Data Center Virtualization 2023",
+      issuer: "Broadcom",
+      issued: "2023-05-18",
+      image: "/badges/1056c6aa-84e4-46d2-b647-37d52bfc07ab.png",
+      url: "https://www.credly.com/badges/1056c6aa-84e4-46d2-b647-37d52bfc07ab/public_url",
+    },
+    {
+      name: "Veeam Certified Engineer (VMCE) 2025",
+      issuer: "Veeam",
+      issued: "2025-11-17",
+      image: "/badges/83f3f777-12fb-4ba7-bdb3-3cc4cd7f2ef4.png",
+      url: "https://www.credly.com/badges/83f3f777-12fb-4ba7-bdb3-3cc4cd7f2ef4/public_url",
+    },
+    {
+      name: "KCSA: Kubernetes and Cloud Native Security Associate",
+      issuer: "The Linux Foundation",
+      issued: "2026-07-31",
+      image: "/badges/c72e9788-a711-4858-800b-77c1bd82ad63.png",
+      url: "https://www.credly.com/badges/c72e9788-a711-4858-800b-77c1bd82ad63/public_url",
+    },
+    {
+      name: "PCA: Prometheus Certified Associate",
+      issuer: "The Linux Foundation",
+      issued: "2026-03-21",
+      image: "/badges/d14788aa-e62b-4279-a20c-0096c0455f13.png",
+      url: "https://www.credly.com/badges/d14788aa-e62b-4279-a20c-0096c0455f13/public_url",
+    },
+    {
+      name: "Nutanix Certified Professional - Multicloud Infrastructure 7",
       issuer: "Nutanix",
       issued: "2026-06-20",
+      image: "/badges/f22c51c8-26a4-4f23-beca-e6830451a388.png",
       url: "https://www.credly.com/badges/f22c51c8-26a4-4f23-beca-e6830451a388/public_url",
-      source: "credly",
+    },
+  ],
+  badges: [
+    {
+      name: "Nutanix Certified Professional - Database Automation 7",
+      issuer: "Nutanix",
+      issued: "2026-09-01",
+      image: "/badges/98021dfd-583b-44b5-8286-62fb7561e119.png",
+      url: "https://www.credly.com/badges/98021dfd-583b-44b5-8286-62fb7561e119/public_url",
+    },
+    {
+      name: "CBA: Certified Backstage Associate",
+      issuer: "The Linux Foundation",
+      issued: "2026-08-08",
+      image: "/badges/20027a13-3c18-483e-86cb-c4634e94f92d.png",
+      url: "https://www.credly.com/badges/20027a13-3c18-483e-86cb-c4634e94f92d/public_url",
+    },
+    {
+      name: "CAPA: Certified Argo Project Associate",
+      issuer: "The Linux Foundation",
+      issued: "2026-08-08",
+      image: "/badges/c2fed9bb-dd04-44f6-b322-afeaba5e1ee2.png",
+      url: "https://www.credly.com/badges/c2fed9bb-dd04-44f6-b322-afeaba5e1ee2/public_url",
+    },
+    {
+      name: "KCA: Kyverno Certified Associate",
+      issuer: "The Linux Foundation",
+      issued: "2026-08-07",
+      image: "/badges/c44b9646-4a75-4f24-a66b-2d9c9a28e65f.png",
+      url: "https://www.credly.com/badges/c44b9646-4a75-4f24-a66b-2d9c9a28e65f/public_url",
     },
     {
       name: "CGOA: Certified GitOps Associate",
       issuer: "The Linux Foundation",
       issued: "2026-08-05",
+      image: "/badges/0e90ad67-9700-4716-8d0f-2333dbb6ade4.png",
       url: "https://www.credly.com/badges/0e90ad67-9700-4716-8d0f-2333dbb6ade4/public_url",
-      source: "credly",
+    },
+    {
+      name: "CCA: Cilium Certified Associate",
+      issuer: "The Linux Foundation",
+      issued: "2026-08-03",
+      image: "/badges/718470b8-3a4f-457e-a23a-2cad64c12012.png",
+      url: "https://www.credly.com/badges/718470b8-3a4f-457e-a23a-2cad64c12012/public_url",
+    },
+    {
+      name: "OTCA: OpenTelemetry Certified Associate",
+      issuer: "The Linux Foundation",
+      issued: "2026-08-01",
+      image: "/badges/585095a9-e5e6-448c-8ec3-7e2159025d95.png",
+      url: "https://www.credly.com/badges/585095a9-e5e6-448c-8ec3-7e2159025d95/public_url",
+    },
+    {
+      name: "KCSA: Kubernetes and Cloud Native Security Associate",
+      issuer: "The Linux Foundation",
+      issued: "2026-07-31",
+      image: "/badges/c72e9788-a711-4858-800b-77c1bd82ad63.png",
+      url: "https://www.credly.com/badges/c72e9788-a711-4858-800b-77c1bd82ad63/public_url",
+    },
+    {
+      name: "Nutanix Certified Professional - Multicloud Infrastructure 7",
+      issuer: "Nutanix",
+      issued: "2026-06-20",
+      image: "/badges/f22c51c8-26a4-4f23-beca-e6830451a388.png",
+      url: "https://www.credly.com/badges/f22c51c8-26a4-4f23-beca-e6830451a388/public_url",
+    },
+    {
+      name: "Nutanix Certified Professional - Multicloud Automation 6",
+      issuer: "Nutanix",
+      issued: "2026-06-20",
+      image: "/badges/bae923e9-80ab-4412-8fb6-87894af88f0c.png",
+      url: "https://www.credly.com/badges/bae923e9-80ab-4412-8fb6-87894af88f0c/public_url",
+    },
+    {
+      name: "Nutanix Certified Professional - Business Continuity 7",
+      issuer: "Nutanix",
+      issued: "2026-06-20",
+      image: "/badges/1201b788-233e-4f0d-b940-0a1a63dd7198.png",
+      url: "https://www.credly.com/badges/1201b788-233e-4f0d-b940-0a1a63dd7198/public_url",
+    },
+    {
+      name: "Nutanix Certified Services - Core Associate 6",
+      issuer: "Nutanix",
+      issued: "2026-06-13",
+      image: "/badges/fd2ff31a-b96e-4952-b7b4-8fa2fbf76213.png",
+      url: "https://www.credly.com/badges/fd2ff31a-b96e-4952-b7b4-8fa2fbf76213/public_url",
+    },
+    {
+      name: "Nutanix Certified Professional - Cloud Native 6",
+      issuer: "Nutanix",
+      issued: "2026-06-06",
+      image: "/badges/a063174e-19e2-4a5f-a013-8393c16ffc05.png",
+      url: "https://www.credly.com/badges/a063174e-19e2-4a5f-a013-8393c16ffc05/public_url",
+    },
+    {
+      name: "Nutanix Certified Professional - Artificial Intelligence 6",
+      issuer: "Nutanix",
+      issued: "2026-05-24",
+      image: "/badges/55b62040-5ae3-4796-b2c7-606f0a08d791.png",
+      url: "https://www.credly.com/badges/55b62040-5ae3-4796-b2c7-606f0a08d791/public_url",
+    },
+    {
+      name: "Nutanix Certified Professional - Network & Security 7",
+      issuer: "Nutanix",
+      issued: "2026-05-22",
+      image: "/badges/ca6458a4-7f8d-4cca-a4a6-cf17a84c71d3.png",
+      url: "https://www.credly.com/badges/ca6458a4-7f8d-4cca-a4a6-cf17a84c71d3/public_url",
+    },
+    {
+      name: "KCNA: Kubernetes and Cloud Native Associate",
+      issuer: "The Linux Foundation",
+      issued: "2026-04-04",
+      image: "/badges/3b47466b-21ce-40a7-8dba-80d7f317ce0c.png",
+      url: "https://www.credly.com/badges/3b47466b-21ce-40a7-8dba-80d7f317ce0c/public_url",
+    },
+    {
+      name: "Nutanix Certified Master - Multicloud Infrastructure 6",
+      issuer: "Nutanix",
+      issued: "2026-03-31",
+      image: "/badges/d370138e-5445-4d9c-82f4-fa6f6fa64033.png",
+      url: "https://www.credly.com/badges/d370138e-5445-4d9c-82f4-fa6f6fa64033/public_url",
+    },
+    {
+      name: "PCA: Prometheus Certified Associate",
+      issuer: "The Linux Foundation",
+      issued: "2026-03-21",
+      image: "/badges/d14788aa-e62b-4279-a20c-0096c0455f13.png",
+      url: "https://www.credly.com/badges/d14788aa-e62b-4279-a20c-0096c0455f13/public_url",
+    },
+    {
+      name: "Veeam Certified Engineer (VMCE) 2025",
+      issuer: "Veeam",
+      issued: "2025-11-17",
+      image: "/badges/83f3f777-12fb-4ba7-bdb3-3cc4cd7f2ef4.png",
+      url: "https://www.credly.com/badges/83f3f777-12fb-4ba7-bdb3-3cc4cd7f2ef4/public_url",
+    },
+    {
+      name: "Google AI Essentials V1",
+      issuer: "Coursera",
+      issued: "2025-07-10",
+      image: "/badges/61ead383-058a-44d2-be34-febd982202a3.png",
+      url: "https://www.credly.com/badges/61ead383-058a-44d2-be34-febd982202a3/public_url",
+    },
+    {
+      name: "Nutanix Certified Professional - Unified Storage 6",
+      issuer: "Nutanix",
+      issued: "2024-07-05",
+      image: "/badges/df3b1363-43ce-4e01-af22-23f59789d181.png",
+      url: "https://www.credly.com/badges/df3b1363-43ce-4e01-af22-23f59789d181/public_url",
+    },
+    {
+      name: "Nutanix Certified Professional - Cloud Integration 6",
+      issuer: "Nutanix",
+      issued: "2024-06-07",
+      image: "/badges/b94b111d-0e28-4ec4-a5e8-22511a734d3f.png",
+      url: "https://www.credly.com/badges/b94b111d-0e28-4ec4-a5e8-22511a734d3f/public_url",
+    },
+    {
+      name: "Nutanix Certified Professional - Multicloud Infrastructure 6",
+      issuer: "Nutanix",
+      issued: "2024-03-15",
+      image: "/badges/761a269c-3b97-47cc-b31e-afe76118c163.png",
+      url: "https://www.credly.com/badges/761a269c-3b97-47cc-b31e-afe76118c163/public_url",
+    },
+    {
+      name: "Nutanix Certified Associate 6",
+      issuer: "Nutanix",
+      issued: "2024-03-01",
+      image: "/badges/926a35da-7e21-4d60-be8b-f95b3111f810.png",
+      url: "https://www.credly.com/badges/926a35da-7e21-4d60-be8b-f95b3111f810/public_url",
+    },
+    {
+      name: "VMware Certified Specialist - vSphere with Tanzu 2024",
+      issuer: "Broadcom",
+      issued: "2024-02-02",
+      image: "/badges/260dd881-742d-4712-bd6d-ba46e44d1944.png",
+      url: "https://www.credly.com/badges/260dd881-742d-4712-bd6d-ba46e44d1944/public_url",
+    },
+    {
+      name: "VMware Certified Specialist - Cloud Foundation 2024",
+      issuer: "Broadcom",
+      issued: "2024-01-29",
+      image: "/badges/18fa5211-2e2e-41c4-86df-f401c0a5c07c.png",
+      url: "https://www.credly.com/badges/18fa5211-2e2e-41c4-86df-f401c0a5c07c/public_url",
+    },
+    {
+      name: "VMware Certified Specialist - vSAN 2024",
+      issuer: "Broadcom",
+      issued: "2024-01-20",
+      image: "/badges/cae5aec9-4f9c-471d-aea0-9eaea016a926.png",
+      url: "https://www.credly.com/badges/cae5aec9-4f9c-471d-aea0-9eaea016a926/public_url",
+    },
+    {
+      name: "VMware Certified Implementation Expert - Data Center Virtualization 2023",
+      issuer: "Broadcom",
+      issued: "2023-05-18",
+      image: "/badges/1056c6aa-84e4-46d2-b647-37d52bfc07ab.png",
+      url: "https://www.credly.com/badges/1056c6aa-84e4-46d2-b647-37d52bfc07ab/public_url",
+    },
+    {
+      name: "VMware Certified Advanced Professional - Data Center Virtualization Deploy 2023",
+      issuer: "Broadcom",
+      issued: "2023-05-18",
+      image: "/badges/8aa82b17-b773-4787-8f6a-03eed5cd9c4b.png",
+      url: "https://www.credly.com/badges/8aa82b17-b773-4787-8f6a-03eed5cd9c4b/public_url",
+    },
+    {
+      name: "VMware Certified Professional - Data Center Virtualization 2023",
+      issuer: "Broadcom",
+      issued: "2023-05-08",
+      image: "/badges/744e5e72-5b27-4951-805c-fd0ac570b077.png",
+      url: "https://www.credly.com/badges/744e5e72-5b27-4951-805c-fd0ac570b077/public_url",
+    },
+    {
+      name: "Zerto Certified Associate",
+      issuer: "Zerto",
+      issued: "2023-05-03",
+      image: "/badges/4a019016-c055-44b0-be07-b6e65114f156.png",
+      url: "https://www.credly.com/badges/4a019016-c055-44b0-be07-b6e65114f156/public_url",
+    },
+    {
+      name: "VMware Certified Advanced Professional - Data Center Virtualization Design 2022",
+      issuer: "Broadcom",
+      issued: "2022-12-23",
+      image: "/badges/faba3387-8853-4d9e-81c8-1e2ab4f8a7c7.png",
+      url: "https://www.credly.com/badges/faba3387-8853-4d9e-81c8-1e2ab4f8a7c7/public_url",
+    },
+    {
+      name: "AWS Cloud Quest: Cloud Practitioner - Training Badge",
+      issuer: "Amazon Web Services Training and Certification",
+      issued: "2022-09-10",
+      image: "/badges/bc7365ee-e681-4c19-8071-b13808c3fe5f.png",
+      url: "https://www.credly.com/badges/bc7365ee-e681-4c19-8071-b13808c3fe5f/public_url",
+    },
+    {
+      name: "VMware Certified Master Specialist - VMware Cloud on AWS 2022",
+      issuer: "Broadcom",
+      issued: "2022-09-04",
+      image: "/badges/f4f1bb5a-0b7e-466d-8371-2dec8737b8af.png",
+      url: "https://www.credly.com/badges/f4f1bb5a-0b7e-466d-8371-2dec8737b8af/public_url",
+    },
+    {
+      name: "VMware Certified Professional - Network Virtualization 2022",
+      issuer: "Broadcom",
+      issued: "2022-07-06",
+      image: "/badges/099ca528-a143-41f5-9b59-74ead3c2af22.png",
+      url: "https://www.credly.com/badges/099ca528-a143-41f5-9b59-74ead3c2af22/public_url",
+    },
+    {
+      name: "Double VCP - Data Center Virtualization & Network Virtualization",
+      issuer: "Broadcom",
+      issued: "2022-07-06",
+      image: "/badges/bbd09582-e642-45c9-93df-af66b9e19803.png",
+      url: "https://www.credly.com/badges/bbd09582-e642-45c9-93df-af66b9e19803/public_url",
+    },
+    {
+      name: "VMware Certified Technical Associate - Network Virtualization 2022",
+      issuer: "Broadcom",
+      issued: "2022-03-03",
+      image: "/badges/0a51d2dd-ab53-482f-b6bf-b73a749ede95.png",
+      url: "https://www.credly.com/badges/0a51d2dd-ab53-482f-b6bf-b73a749ede95/public_url",
+    },
+    {
+      name: "VMware Certified Professional - Data Center Virtualization 2022",
+      issuer: "Broadcom",
+      issued: "2022-01-13",
+      image: "/badges/fc37c0bb-c352-4733-8744-d919213f7ac4.png",
+      url: "https://www.credly.com/badges/fc37c0bb-c352-4733-8744-d919213f7ac4/public_url",
+    },
+    {
+      name: "Lifelong Learning",
+      issuer: "Certiprof",
+      issued: "2021-01-20",
+      image: "/badges/36f8e2ad-138c-4485-99e6-a51ca38f63c1.png",
+      url: "https://www.credly.com/badges/36f8e2ad-138c-4485-99e6-a51ca38f63c1/public_url",
+    },
+    {
+      name: "Cyber Security Foundation Professional Certificate - CSFPC™ !",
+      issuer: "Certiprof",
+      issued: "2021-01-20",
+      image: "/badges/04dcd4ec-7992-4ff1-8962-6aa9fd7a7487.png",
+      url: "https://www.credly.com/badges/04dcd4ec-7992-4ff1-8962-6aa9fd7a7487/public_url",
     },
   ],
-  /** Listed on resume; no matching Credly badge found during research */
+  /** Listed on resume; no matching Credly badge — text only, no fake images */
   resumeOnly: [
     {
       name: "Agentic AI",
       issuer: "Listed on resume (Applied AI & Cloud-Native)",
-      source: "resume",
     },
     {
       name: "Generative AI with LLMs",
       issuer: "DeepLearning.AI (per resume)",
-      source: "resume",
     },
     {
       name: "International Certificate in Product Management",
       issuer: "Institute of Product Leadership (5-month, faculty-led)",
-      source: "resume",
     },
   ],
 };
