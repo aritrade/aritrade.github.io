@@ -586,6 +586,10 @@ export default function App() {
               [
                 { label: "AI certifications", items: certifications.ai },
                 {
+                  label: "AI Security certifications",
+                  items: certifications.aiSecurity,
+                },
+                {
                   label: "Management certifications",
                   items: certifications.management,
                 },

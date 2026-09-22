@@ -24,11 +24,12 @@
  * Certifications
  *   certifications.badges[] / featured[] → Credly badges (image in public/badges/<id>.png)
  *   certifications.ai[]                  → AI certificate images (public/certificates/)
+ *   certifications.aiSecurity[]          → AI Security certificate images (public/certificates/)
  *   certifications.management[]          → Management certificate images (public/certificates/)
  *   certifications.wellbeing[]           → Well-being certificate images (public/certificates/)
  *   certifications.resumeOnly[]          → text-only lines when no certificate artwork exists
  *   To add a Credly badge: save PNG under public/badges/, add to badges[] (and featured[] if desired), bump credlyCount
- *   To add a certificate image: save under public/certificates/, add to ai[] / management[] / wellbeing[]
+ *   To add a certificate image: save under public/certificates/, add to ai[] / aiSecurity[] / management[] / wellbeing[]
  *   To remove: delete the entry (and optionally the file); adjust credlyCount for Credly badges
  *
  * Experience / skills / work / writing / mentoring
@@ -235,6 +236,7 @@ export const certifications: {
   featured: CredlyBadge[];
   badges: CredlyBadge[];
   ai: DisplayCert[];
+  aiSecurity: DisplayCert[];
   management: DisplayCert[];
   wellbeing: DisplayCert[];
   resumeOnly: ResumeCert[];
@@ -623,6 +625,16 @@ export const certifications: {
       issued: "2025-02-10",
       image: "/certificates/generative-ai-product-managers.jpg",
       url: "https://www.linkedin.com/learning/certificates/ceded340bad9969f1e0f1a5b57db188e69630761d54c812b8b69cc9805a2ee86",
+    },
+  ],
+  /** AI security credentials with real artwork */
+  aiSecurity: [
+    {
+      name: "MCP Security Fundamentals",
+      issuer: "AI Security University",
+      issued: "2026-07-21",
+      image: "/certificates/ai-security.png",
+      url: "https://aisec.university/verify/388f70be-537c-4079-95d7-e8cd7999e41c",
     },
   ],
   /** Management / product certificates with real artwork (not Credly) */
