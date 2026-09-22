@@ -850,22 +850,15 @@ export const recommendations: Recommendation[] = [
     name: "Cathy Lareau",
     designation: "Director, Americas Customer Success · Veeam Software",
     initials: "CL",
-    url: "https://www.linkedin.com/in/cathy-lareau",
+    url: "https://www.linkedin.com/in/cathy-lareau/",
     quote:
       "I had the pleasure of managing Aritra when he joined Veeam as the APJ region’s first and only Onboarding Engineer during our global expansion. He embodies the qualities I look for in field engineers: strong technical ability, sharp critical thinking, excellent interpersonal skills, humility, a tireless work ethic, and a genuine passion for helping and connecting with others.\n\nHe quickly mastered our products and took the initiative to build the processes, relationships, and assets that established the new program in the region. He collaborates effectively across the organization and with customers, and he communicates exceptionally well—in person, in writing, and online.\n\nIn addition to his customer work, Aritra regularly presented to internal leaders and field teams to articulate the team’s purpose, value, and engagement model. He is comfortable presenting at all levels and has a keen eye for identifying improvements and closing gaps.\n\nI’m confident Aritra will thrive in a range of roles—including Sales, Professional Services, Customer Success Engineering, and management. I recommend him without reservation to any organization seeking a high-impact engineer and collaborative team member.",
-  },
-  {
-    name: "Danish Bagdadi",
-    designation: "Infrastructure Operations Lead at Axis Bank",
-    initials: "DB",
-    url: "https://www.linkedin.com/in/danish-bagdadi-561b7918",
-    quote:
-      "I had the pleasure of working closely with Aritra during his time as a Technical Account Manager at Nutanix, and he stands out as a true advocate for customer success.\n\nAritra possesses a rare combination of deep technical expertise in HCI and cloud infrastructure paired with the strategic mindset needed to navigate complex enterprise environments. He didn't just manage accounts; he became a trusted advisor to his clients. I was particularly impressed by his ability to proactively identify potential roadblocks in high-stakes deployments and resolve them before they impacted the business.\n\nHe excels at translating technical challenges into clear, actionable business outcomes for stakeholders at all levels. Any organization looking for a TAM who is as skilled at architecting solutions as they are at building long-term partnerships would find Aritra to be an invaluable asset.",
   },
   {
     name: "Prajnya Pandey",
     designation: "Leading Customers to Success | Customer Obsessed | IIM Lucknow",
     initials: "PP",
+    url: "https://www.linkedin.com/in/prajnya-pandey/",
     quote:
       "Aritra is a very fast learner and has a zest for challenges. He understands the problem statement very well and ensures to come up with the best possible solutions. In my time working with him, he has been an asset to the customers, organisation and the team. Aritra never shies away from asking for help and is always eager to help others. He brings his creative energy both to his work and the workplace, which has always been refreshing. I would highly recommend him to any organisation which is looking for a candidate with a growth mindset.",
   },
@@ -873,6 +866,7 @@ export const recommendations: Recommendation[] = [
     name: "Suresh Patare",
     designation: "Director – Professional Services | Enterprise Kubernetes & AI Platforms",
     initials: "SP",
+    url: "https://www.linkedin.com/in/suresh-patare-b6828b33/",
     quote:
       "Aritra has been an outstanding colleague, he is technically sound, always up to date with the latest technologies, and has an incredible ability to quickly learn and adapt to new challenges.\n\nWhat really sets Aritra apart is his customer-centric mindset and reliability. He consistently puts the customer first and takes ownership of tasks, ensuring that solutions not only meet but exceed expectations.\n\nAs a team player, Aritra is always willing to collaborate, share knowledge, and contribute positively to the team dynamic. His sincerity and work ethic make him a standout individual, and I am confident he will continue to excel in whatever he pursue next.",
   },
@@ -880,31 +874,43 @@ export const recommendations: Recommendation[] = [
     name: "Girivaru Tarun",
     designation: "Product Manager",
     initials: "GT",
+    url: "https://www.linkedin.com/in/girivaru-tarun-b4907b6a/",
     quote:
       "I have worked with Aritra on some large BFSI accounts. He understands the perspective of the customer and the internal organizational stakeholders to achieve the best outcome. He is very industrious and is an expert on virtualization and security solutions.",
+  },
+  {
+    name: "Karthik Sivagnanam",
+    designation: "Systems Engineer at Nutanix (Presales)",
+    initials: "KS",
+    url: "https://www.linkedin.com/in/karthik-sivagnanam-65298318/",
+    quote:
+      "Aritra and I have collaborated on multiple customer engagement opportunities. I truly appreciate his strong focus on customer retention and ensuring their success with the product. He is dedicated to solving customer challenges and providing continuous guidance throughout their journey. He quickly grasps new concepts in a single knowledge transfer session and delivers them with precision. Truly a great team player and individual contributor for any company",
   },
   {
     name: "Khalid Parkar",
     designation:
       "Solution Engineering@Nutanix | Hybrid Cloud | 8X Nutanix Certified | 1X Vmware Certified",
     initials: "KP",
+    url: "https://www.linkedin.com/in/khalid-parkar-422b6022/",
     quote:
       "I had the pleasure of working with Aritra at Nutanix, where we were part of the same team.\n\nI still remember interviewing him—his eagerness to learn, confidence, and genuine curiosity made a lasting impression. From day one, he brought great energy to the team, never hesitating to ask questions or share ideas.\n\nAritra is not only a dedicated professional who brings real value to customer service, but also a fun and empathetic individual who makes the workplace better. Outside of work, he’s a talented singer, and we’ve shared many memorable jam sessions—both in the office and after hours.\n\nHe’s the kind of teammate who lifts both morale and performance. Any team would be lucky to have him!",
+  },
+  {
+    name: "Danish Bagdadi",
+    designation: "Infrastructure Operations Lead at Axis Bank",
+    initials: "DB",
+    url: "https://www.linkedin.com/in/danish-bagdadi-561b7918/",
+    quote:
+      "I had the pleasure of working closely with Aritra during his time as a Technical Account Manager at Nutanix, and he stands out as a true advocate for customer success.\n\nAritra possesses a rare combination of deep technical expertise in HCI and cloud infrastructure paired with the strategic mindset needed to navigate complex enterprise environments. He didn't just manage accounts; he became a trusted advisor to his clients. I was particularly impressed by his ability to proactively identify potential roadblocks in high-stakes deployments and resolve them before they impacted the business.\n\nHe excels at translating technical challenges into clear, actionable business outcomes for stakeholders at all levels. Any organization looking for a TAM who is as skilled at architecting solutions as they are at building long-term partnerships would find Aritra to be an invaluable asset.",
   },
   {
     name: "Tanmay Bhandge",
     designation:
       "Technology Leader | Enterprise AI Architect | AI Infrastructure, Agentic Systems & Platform Engineering | Helping Organizations Deploy AI Securely at Scale",
     initials: "TB",
+    url: "https://www.linkedin.com/in/tanmay-bhandge/",
     quote:
       "I highly recommend Aritra, who possesses a deep and comprehensive understanding of both VMware and Nutanix platforms. What truly sets Aritra apart is his unwavering dedication to customer success. On multiple occasions, I’ve witnessed him proactively exceeding expectations to ensure customers receive the support and solutions they need. His passion for ensuring customer satisfaction is evident in his commitment to going above and beyond, making him a valuable asset to any team.",
-  },
-  {
-    name: "Karthik Sivagnanam",
-    designation: "Systems Engineer at Nutanix (Presales)",
-    initials: "KS",
-    quote:
-      "Aritra and I have collaborated on multiple customer engagement opportunities. I truly appreciate his strong focus on customer retention and ensuring their success with the product. He is dedicated to solving customer challenges and providing continuous guidance throughout their journey. He quickly grasps new concepts in a single knowledge transfer session and delivers them with precision. Truly a great team player and individual contributor for any company",
   },
 ];
 
