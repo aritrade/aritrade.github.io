@@ -207,9 +207,9 @@ export const skills = {
       items: "PostgreSQL / pgvector · SQL · Prometheus / PromQL / Grafana · SIEM (QRadar / Splunk)",
     },
     {
-      title: "Support & Case Management",
+      title: "Tools at work",
       items:
-        "Zendesk / Intercom / Gorgias / ServiceNow-style ticketing · Gmail · Calendar · Slack-equivalent messaging",
+        "Salesforce · Planhat · Monday · Gainsight · Slack · Microsoft Teams · Zoom · Confluence · Jira · Bugzilla · Outlook · Glean AI",
     },
   ],
 } as const;
