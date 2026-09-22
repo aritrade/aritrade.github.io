@@ -26,13 +26,13 @@
  *   certifications.nutanix[]             → Nutanix Credly badges only
  *   certifications.cloudNative[]         → Cloud Native — The Linux Foundation Credly badges only
  *   certifications.dataProtection[]      → Data Protection & DR — Veeam VMCE and Zerto badges
- *   certifications.badges[] / featured[] → other Credly badges (no duplicates across groups)
+ *   certifications.badges[]              → other Credly badges (no duplicates across groups)
  *   Badge images: public/badges/<id>.png
  *   certifications.ai[] / aiSecurity[] / management[] / wellbeing[] → certificate images in public/certificates/
  *   certifications.resumeOnly[]          → text-only lines when no certificate artwork exists
  *   To add a Credly badge: save PNG under public/badges/, then file by issuer:
  *     Broadcom/VMware → vmware[]; Nutanix → nutanix[]; The Linux Foundation → cloudNative[];
- *     Veeam VMCE or Zerto → dataProtection[]; otherwise badges[] / featured[]
+ *     Veeam VMCE or Zerto → dataProtection[]; otherwise badges[]
  *     (do not list the same badge in more than one array), bump credlyCount
  *   To add a certificate image: save under public/certificates/, add to ai[] / aiSecurity[] / management[] / wellbeing[]
  *     (omit url when there is no public verify link — the card will open the image larger)
@@ -239,7 +239,6 @@ export type ResumeCert = {
 export const certifications: {
   credlyCount: number;
   credlyProfile: string;
-  featured: CredlyBadge[];
   vmware: CredlyBadge[];
   nutanix: CredlyBadge[];
   cloudNative: CredlyBadge[];
@@ -253,16 +252,6 @@ export const certifications: {
 } = {
   credlyCount: 41,
   credlyProfile: "https://www.credly.com/users/aritrade/badges",
-  /** Highlight row — general Credly badges only (not in vendor groups) */
-  featured: [
-    {
-      name: "Google AI Essentials V1",
-      issuer: "Coursera",
-      issued: "2025-07-10",
-      image: "/badges/61ead383-058a-44d2-be34-febd982202a3.png",
-      url: "https://www.credly.com/badges/61ead383-058a-44d2-be34-febd982202a3/public_url",
-    },
-  ],
   /** VMware (Broadcom) Credly badges — exclusive to this group */
   vmware: [
     {
@@ -527,8 +516,15 @@ export const certifications: {
       url: "https://www.credly.com/badges/4a019016-c055-44b0-be07-b6e65114f156/public_url",
     },
   ],
-  /** Other Credly badges (not in vendor/cloud-native/data-protection groups; excludes featured) */
+  /** Other Credly badges (not in vendor/cloud-native/data-protection groups) */
   badges: [
+    {
+      name: "Google AI Essentials V1",
+      issuer: "Coursera",
+      issued: "2025-07-10",
+      image: "/badges/61ead383-058a-44d2-be34-febd982202a3.png",
+      url: "https://www.credly.com/badges/61ead383-058a-44d2-be34-febd982202a3/public_url",
+    },
     {
       name: "AWS Cloud Quest: Cloud Practitioner - Training Badge",
       issuer: "Amazon Web Services Training and Certification",

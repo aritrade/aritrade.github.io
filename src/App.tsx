@@ -551,11 +551,6 @@ export default function App() {
             {(
               [
                 {
-                  label: "Featured",
-                  items: certifications.featured,
-                  featured: true,
-                },
-                {
                   label: "VMware (Broadcom) certifications",
                   items: certifications.vmware,
                 },
@@ -580,22 +575,12 @@ export default function App() {
               group.items.length === 0 ? null : (
                 <Reveal
                   key={group.label}
-                  className={
-                    "featured" in group && group.featured
-                      ? "badge-featured"
-                      : "badge-all"
-                  }
+                  className="badge-all"
                   reducedMotion={reducedMotion}
                   delay={gi * 40}
                 >
                   <p className="badge-strip-label">{group.label}</p>
-                  <ul
-                    className={
-                      "featured" in group && group.featured
-                        ? "badge-grid badge-grid-featured"
-                        : "badge-grid"
-                    }
-                  >
+                  <ul className="badge-grid">
                     {group.items.map((c) => (
                       <li
                         key={`${group.label}-${c.url}`}
