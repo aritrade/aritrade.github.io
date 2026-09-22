@@ -22,14 +22,14 @@
  *   education.*
  *
  * Certifications
- *   certifications.badges[]            → Credly badges (name, image, url, issuer, issued)
- *   certifications.featured[]          → highlight row (subset of real Credly badges)
- *   certifications.management[]        → non-Credly certificates with artwork (image + verify url)
- *   certifications.resumeOnly[]        → resume-only lines without certificate images
- *   Badge artwork: public/badges/<id>.png — add/remove file with badges[] / featured[]
- *   Management certs: public/certificates/<slug>.jpg — add/remove file with management[]
- *   To add a Credly badge: download image to public/badges/, add entry to badges[] (and featured[] if desired); bump credlyCount
- *   To remove: delete the entry (and optionally the file under public/badges/); lower credlyCount
+ *   certifications.badges[] / featured[] → Credly badges (image in public/badges/<id>.png)
+ *   certifications.ai[]                  → AI certificate images (public/certificates/)
+ *   certifications.management[]          → Management certificate images (public/certificates/)
+ *   certifications.wellbeing[]           → Well-being certificate images (public/certificates/)
+ *   certifications.resumeOnly[]          → text-only lines when no certificate artwork exists
+ *   To add a Credly badge: save PNG under public/badges/, add to badges[] (and featured[] if desired), bump credlyCount
+ *   To add a certificate image: save under public/certificates/, add to ai[] / management[] / wellbeing[]
+ *   To remove: delete the entry (and optionally the file); adjust credlyCount for Credly badges
  *
  * Experience / skills / work / writing / mentoring
  *   experience[]                       → add a role object, or delete one to remove
@@ -214,13 +214,8 @@ export type CredlyBadge = {
   url: string;
 };
 
-export type ResumeCert = {
-  name: string;
-  issuer: string;
-};
-
-/** Non-Credly certificate with real artwork (e.g. Institute of Product Leadership) */
-export type ManagementCert = {
+/** Certificate with real artwork shown in AI / Management / Well-being grids */
+export type DisplayCert = {
   name: string;
   issuer: string;
   issued?: string;
@@ -229,12 +224,19 @@ export type ManagementCert = {
   url?: string;
 };
 
+export type ResumeCert = {
+  name: string;
+  issuer: string;
+};
+
 export const certifications: {
   credlyCount: number;
   credlyProfile: string;
   featured: CredlyBadge[];
   badges: CredlyBadge[];
-  management: ManagementCert[];
+  ai: DisplayCert[];
+  management: DisplayCert[];
+  wellbeing: DisplayCert[];
   resumeOnly: ResumeCert[];
 } = {
   credlyCount: 41,
@@ -585,6 +587,44 @@ export const certifications: {
       url: "https://www.credly.com/badges/d73e8b7f-2407-4a24-a4fd-616e1d1fff20",
     },
   ],
+  /** AI / generative AI / agents — real certificate artwork */
+  ai: [
+    {
+      name: "Agentic AI",
+      issuer: "DeepLearning.AI",
+      issued: "2026-04-21",
+      image: "/certificates/dlai-agentic-ai.jpg",
+      url: "https://www.deeplearning.ai/certificates/fe89a3da-1085-4d9e-a8f6-5543eaf290fd",
+    },
+    {
+      name: "Generative AI with Large Language Models",
+      issuer: "DeepLearning.AI",
+      issued: "2026-04-21",
+      image: "/certificates/dlai-generative-ai-llms.jpg",
+      url: "https://www.deeplearning.ai/certificates/52046edf-adc9-4071-a867-64ddb25ec9b2",
+    },
+    {
+      name: "Generative AI for Everyone",
+      issuer: "DeepLearning.AI",
+      issued: "2026-02-22",
+      image: "/certificates/dlai-generative-ai-everyone.jpg",
+      url: "https://www.deeplearning.ai/certificates/9cf4ce63-d1e1-43d7-ab42-3d4f186b3938",
+    },
+    {
+      name: "AI for Everyone",
+      issuer: "DeepLearning.AI",
+      issued: "2026-02-21",
+      image: "/certificates/dlai-ai-for-everyone.jpg",
+      url: "https://www.deeplearning.ai/certificates/665a5381-078d-4253-ad24-b86d9f9f54aa",
+    },
+    {
+      name: "Generative AI for Product Managers",
+      issuer: "LinkedIn Learning",
+      issued: "2025-02-10",
+      image: "/certificates/generative-ai-product-managers.jpg",
+      url: "https://www.linkedin.com/learning/certificates/ceded340bad9969f1e0f1a5b57db188e69630761d54c812b8b69cc9805a2ee86",
+    },
+  ],
   /** Management / product certificates with real artwork (not Credly) */
   management: [
     {
@@ -602,17 +642,18 @@ export const certifications: {
       url: "https://coursera.org/verify/6SBIES87A046",
     },
   ],
-  /** Listed on resume; no matching Credly badge — text only, no fake images */
-  resumeOnly: [
+  /** Well-being / psychology certificates with real artwork */
+  wellbeing: [
     {
-      name: "Agentic AI",
-      issuer: "Listed on resume (Applied AI & Cloud-Native)",
-    },
-    {
-      name: "Generative AI with LLMs",
-      issuer: "DeepLearning.AI (per resume)",
+      name: "The Science of Well-Being",
+      issuer: "Yale University (via Coursera)",
+      issued: "2025-07-07",
+      image: "/certificates/science-of-well-being.jpg",
+      url: "https://www.coursera.org/account/accomplishments/verify/J0HIHYSSPQQI",
     },
   ],
+  /** Listed on resume; no matching certificate artwork — text only */
+  resumeOnly: [],
 };
 
 export type Project = {

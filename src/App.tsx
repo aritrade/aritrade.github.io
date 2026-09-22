@@ -582,63 +582,91 @@ export default function App() {
               </ul>
             </Reveal>
 
-            <Reveal className="mgmt-certs" reducedMotion={reducedMotion} delay={100}>
-              <p className="badge-strip-label">Management certifications</p>
-              <ul className="mgmt-cert-list">
-                {certifications.management.map((c) => {
-                  const body = (
-                    <>
-                      <span className="mgmt-cert-frame">
-                        <img src={c.image} alt={c.name} loading="lazy" />
-                      </span>
-                      <span className="mgmt-cert-caption">
-                        <span className="mgmt-cert-name">{c.name}</span>
-                        <span className="mgmt-cert-meta">
-                          {c.issuer}
-                          {c.issued ? ` · ${c.issued}` : ""}
-                        </span>
-                        {c.url ? (
-                          <span className="mgmt-cert-verify">Verify credential</span>
-                        ) : null}
-                      </span>
-                    </>
-                  );
-                  return (
-                    <li key={c.image}>
-                      {c.url ? (
-                        <ExternalLink className="mgmt-cert-card" href={c.url}>
-                          {body}
-                        </ExternalLink>
-                      ) : (
-                        <a
-                          className="mgmt-cert-card"
-                          href={c.image}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          {body}
-                        </a>
-                      )}
-                    </li>
-                  );
-                })}
-              </ul>
-            </Reveal>
+            {(
+              [
+                { label: "AI certifications", items: certifications.ai },
+                {
+                  label: "Management certifications",
+                  items: certifications.management,
+                },
+                {
+                  label: "Well-being certifications",
+                  items: certifications.wellbeing,
+                },
+              ] as const
+            ).map((group, gi) =>
+              group.items.length === 0 ? null : (
+                <Reveal
+                  key={group.label}
+                  className="mgmt-certs"
+                  reducedMotion={reducedMotion}
+                  delay={100 + gi * 20}
+                >
+                  <p className="badge-strip-label">{group.label}</p>
+                  <ul className="mgmt-cert-list">
+                    {group.items.map((c) => {
+                      const body = (
+                        <>
+                          <span className="mgmt-cert-frame">
+                            <img src={c.image} alt={c.name} loading="lazy" />
+                          </span>
+                          <span className="mgmt-cert-caption">
+                            <span className="mgmt-cert-name">{c.name}</span>
+                            <span className="mgmt-cert-meta">
+                              {c.issuer}
+                              {c.issued ? ` · ${c.issued}` : ""}
+                            </span>
+                            {c.url ? (
+                              <span className="mgmt-cert-verify">
+                                Verify credential
+                              </span>
+                            ) : null}
+                          </span>
+                        </>
+                      );
+                      return (
+                        <li key={c.image}>
+                          {c.url ? (
+                            <ExternalLink className="mgmt-cert-card" href={c.url}>
+                              {body}
+                            </ExternalLink>
+                          ) : (
+                            <a
+                              className="mgmt-cert-card"
+                              href={c.image}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              {body}
+                            </a>
+                          )}
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </Reveal>
+              ),
+            )}
 
-            <Reveal className="resume-only" reducedMotion={reducedMotion} delay={120}>
-              <h3>Also listed on the resume</h3>
-              <p>
-                No matching Credly badge page — shown as text only, without
-                images.
-              </p>
-              <ul>
-                {certifications.resumeOnly.map((c) => (
-                  <li key={c.name}>
-                    <strong>{c.name}</strong>
-                    <span>{c.issuer}</span>
-                  </li>
-                ))}
-              </ul>
+            {certifications.resumeOnly.length > 0 ? (
+              <Reveal className="resume-only" reducedMotion={reducedMotion} delay={120}>
+                <h3>Also listed on the resume</h3>
+                <p>
+                  No matching certificate artwork — shown as text only, without
+                  images.
+                </p>
+                <ul>
+                  {certifications.resumeOnly.map((c) => (
+                    <li key={c.name}>
+                      <strong>{c.name}</strong>
+                      <span>{c.issuer}</span>
+                    </li>
+                  ))}
+                </ul>
+              </Reveal>
+            ) : null}
+
+            <Reveal className="resume-only" reducedMotion={reducedMotion} delay={140}>
               <ExternalLink
                 className="btn btn-pill btn-ghost-light"
                 href={certifications.credlyProfile}

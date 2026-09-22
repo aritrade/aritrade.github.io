@@ -38,7 +38,9 @@ All visible copy lives in **`src/data/content.ts`**. Ordinary updates do not nee
 | Skills | `skills` |
 | Certifications (Credly badge images) | `certifications.badges`, `certifications.featured`, images in `public/badges/` |
 | Management certifications | `certifications.management`, images in `public/certificates/` |
-| Resume-only certs (no Credly image) | `certifications.resumeOnly` |
+| AI certifications | `certifications.ai`, images in `public/certificates/` |
+| Well-being certifications | `certifications.wellbeing`, images in `public/certificates/` |
+| Resume-only certs (no artwork) | `certifications.resumeOnly` |
 | Projects | `projects` |
 | Writing | `writing` |
 | Mentoring / Topmate | `mentoring` |
