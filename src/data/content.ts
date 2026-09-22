@@ -46,6 +46,8 @@
  *       { src, kind: "gif"|"video", poster? } — poster recommended for reduced-motion / off-screen
  *   writing[]                          → Medium pieces
  *   mentoring.*                        → Topmate services + testimonials
+ *     mentoring.services[].image       → poster JPEG in public/mentoring/ (crop Topmate creatives)
+ *     mentoring.proof                  → ratings/bookings line shown under the service cards
  *
  * Gallery photos
  *   1. Drop a .jpg into public/ (e.g. public/gallery-event.jpg)
@@ -796,18 +798,21 @@ export const writing: Article[] = [
 export const mentoring = {
   tagline:
     "A seeker helping seekers get unstuck. I help tech professionals land better roles, ace interviews, navigate career moves & build careers in Customer Success, Cloud & Virtualization, Modern Apps and AI.",
-  rating: "5 / 5 from 3 ratings on Topmate",
+  /** Exact Topmate proof line — do not invent ratings */
+  proof: "5/5 · 3 ratings · 3 bookings · 2 testimonials",
   profileUrl: "https://topmate.io/aritrade",
   services: [
     {
-      name: "Free Career Clarity Call",
-      detail: "30 mins · Video meeting · Free",
-      url: "https://topmate.io/aritrade/1427618",
+      name: "Ask Aritra — Career & Tech",
+      detail: "Priority DM · 2 days",
+      image: "/mentoring/ask-aritra-priority-dm.jpg",
+      url: "https://topmate.io/aritrade",
     },
     {
-      name: "Ask Aritra — Career & Tech",
-      detail: "Priority DM · Reply within 2 days · Free",
-      url: "https://topmate.io/aritrade/1512420",
+      name: "Free Career Clarity Call",
+      detail: "30 mins · ₹0",
+      image: "/mentoring/free-career-clarity-call.jpg",
+      url: "https://topmate.io/aritrade",
     },
   ],
   testimonials: [

@@ -872,14 +872,19 @@ export default function App() {
             </Reveal>
 
             <div className="mentor-layout">
-              <Reveal reducedMotion={reducedMotion} delay={60}>
-                <p className="mentor-rating">{mentoring.rating}</p>
-                <ul className="service-rail">
+              <Reveal className="mentor-offer" reducedMotion={reducedMotion} delay={60}>
+                <p className="mentor-proof">{mentoring.proof}</p>
+                <ul className="mentor-service-cards">
                   {mentoring.services.map((s) => (
-                    <li key={s.url}>
-                      <ExternalLink href={s.url}>
-                        <strong>{s.name}</strong>
-                        <span>{s.detail}</span>
+                    <li key={s.name}>
+                      <ExternalLink className="mentor-service-card" href={s.url}>
+                        <span className="mentor-service-art">
+                          <img src={s.image} alt={s.name} loading="lazy" />
+                        </span>
+                        <span className="mentor-service-caption">
+                          <strong>{s.name}</strong>
+                          <span>{s.detail}</span>
+                        </span>
                       </ExternalLink>
                     </li>
                   ))}
