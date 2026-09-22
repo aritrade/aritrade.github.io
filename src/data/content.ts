@@ -24,12 +24,14 @@
  * Certifications
  *   certifications.vmware[]              → VMware (Broadcom) Credly badges only
  *   certifications.nutanix[]             → Nutanix Credly badges only
- *   certifications.badges[] / featured[] → other Credly badges (not VMware/Nutanix; no duplicates across groups)
+ *   certifications.cloudNative[]         → Cloud Native — The Linux Foundation Credly badges only
+ *   certifications.badges[] / featured[] → other Credly badges (no duplicates across groups)
  *   Badge images: public/badges/<id>.png
  *   certifications.ai[] / aiSecurity[] / management[] / wellbeing[] → certificate images in public/certificates/
  *   certifications.resumeOnly[]          → text-only lines when no certificate artwork exists
- *   To add a Credly badge: save PNG under public/badges/, add to vmware[] OR nutanix[] OR badges[]
- *     (and featured[] only for a general badge you want highlighted), bump credlyCount
+ *   To add a Credly badge: save PNG under public/badges/, add to vmware[] OR nutanix[] OR cloudNative[]
+ *     (issuer The Linux Foundation → cloudNative[]) OR badges[] / featured[] for everything else
+ *     (do not list the same badge in more than one array), bump credlyCount
  *   To add a certificate image: save under public/certificates/, add to ai[] / aiSecurity[] / management[] / wellbeing[]
  *     (omit url when there is no public verify link — the card will open the image larger)
  *   To remove: delete the entry (and optionally the file); adjust credlyCount for Credly badges
@@ -238,6 +240,7 @@ export const certifications: {
   featured: CredlyBadge[];
   vmware: CredlyBadge[];
   nutanix: CredlyBadge[];
+  cloudNative: CredlyBadge[];
   badges: CredlyBadge[];
   ai: DisplayCert[];
   aiSecurity: DisplayCert[];
@@ -247,7 +250,7 @@ export const certifications: {
 } = {
   credlyCount: 41,
   credlyProfile: "https://www.credly.com/users/aritrade/badges",
-  /** Highlight row — general Credly badges only (not in VMware/Nutanix groups) */
+  /** Highlight row — general Credly badges only (not in vendor/cloud-native groups) */
   featured: [
     {
       name: "Google AI Essentials V1",
@@ -262,20 +265,6 @@ export const certifications: {
       issued: "2025-11-17",
       image: "/badges/83f3f777-12fb-4ba7-bdb3-3cc4cd7f2ef4.png",
       url: "https://www.credly.com/badges/83f3f777-12fb-4ba7-bdb3-3cc4cd7f2ef4/public_url",
-    },
-    {
-      name: "KCSA: Kubernetes and Cloud Native Security Associate",
-      issuer: "The Linux Foundation",
-      issued: "2026-07-31",
-      image: "/badges/c72e9788-a711-4858-800b-77c1bd82ad63.png",
-      url: "https://www.credly.com/badges/c72e9788-a711-4858-800b-77c1bd82ad63/public_url",
-    },
-    {
-      name: "PCA: Prometheus Certified Associate",
-      issuer: "The Linux Foundation",
-      issued: "2026-03-21",
-      image: "/badges/d14788aa-e62b-4279-a20c-0096c0455f13.png",
-      url: "https://www.credly.com/badges/d14788aa-e62b-4279-a20c-0096c0455f13/public_url",
     },
   ],
   /** VMware (Broadcom) Credly badges — exclusive to this group */
@@ -459,8 +448,22 @@ export const certifications: {
       url: "https://www.credly.com/badges/926a35da-7e21-4d60-be8b-f95b3111f810/public_url",
     },
   ],
-  /** Other Credly badges (non-VMware, non-Nutanix; excludes featured) */
-  badges: [
+  /** Cloud Native — The Linux Foundation Credly badges only */
+  cloudNative: [
+    {
+      name: "KCSA: Kubernetes and Cloud Native Security Associate",
+      issuer: "The Linux Foundation",
+      issued: "2026-07-31",
+      image: "/badges/c72e9788-a711-4858-800b-77c1bd82ad63.png",
+      url: "https://www.credly.com/badges/c72e9788-a711-4858-800b-77c1bd82ad63/public_url",
+    },
+    {
+      name: "PCA: Prometheus Certified Associate",
+      issuer: "The Linux Foundation",
+      issued: "2026-03-21",
+      image: "/badges/d14788aa-e62b-4279-a20c-0096c0455f13.png",
+      url: "https://www.credly.com/badges/d14788aa-e62b-4279-a20c-0096c0455f13/public_url",
+    },
     {
       name: "CBA: Certified Backstage Associate",
       issuer: "The Linux Foundation",
@@ -510,6 +513,9 @@ export const certifications: {
       image: "/badges/3b47466b-21ce-40a7-8dba-80d7f317ce0c.png",
       url: "https://www.credly.com/badges/3b47466b-21ce-40a7-8dba-80d7f317ce0c/public_url",
     },
+  ],
+  /** Other Credly badges (not VMware/Nutanix/Linux Foundation; excludes featured) */
+  badges: [
     {
       name: "Zerto Certified Associate",
       issuer: "Zerto",
@@ -545,6 +551,7 @@ export const certifications: {
       url: "https://www.credly.com/badges/d73e8b7f-2407-4a24-a4fd-616e1d1fff20",
     },
   ],
+
   /** AI / generative AI / agents — real certificate artwork */
   ai: [
     {

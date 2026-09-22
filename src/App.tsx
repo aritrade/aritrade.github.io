@@ -564,6 +564,10 @@ export default function App() {
                   items: certifications.nutanix,
                 },
                 {
+                  label: "Cloud Native Certifications",
+                  items: certifications.cloudNative,
+                },
+                {
                   label: "Other credentials",
                   items: certifications.badges,
                 },
