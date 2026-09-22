@@ -16,6 +16,9 @@
   --champagne: #c9a96a;
   --champagne-bright: #e0c48a;
   --champagne-dim: rgba(201, 169, 106, 0.45);
+  /* Cool platinum for CXO name lockup (not champagne gold) */
+  --platinum: #c5ccd6;
+  --platinum-bright: #e8ecf1;
   --oxblood: #5c1824;
   --oxblood-deep: #3d1018;
   --text-on-ink: #f4ebe1;
@@ -201,9 +204,16 @@ button:focus-visible {
 
 .wordmark-name {
   font-family: var(--font-display);
-  font-weight: 500;
+  font-weight: 550;
   font-size: 1.15rem;
-  letter-spacing: -0.02em;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+.wordmark-name .accent {
+  color: var(--platinum);
+  font-style: normal;
+  font-weight: 550;
 }
 
 .desktop-nav {
@@ -603,29 +613,26 @@ button:focus-visible {
   white-space: nowrap;
   overflow: visible;
   font-family: var(--font-display);
-  font-weight: 500;
+  font-weight: 550;
   /* Fallback when container query units are unavailable */
-  font-size: clamp(2.5rem, 0.45rem + 6.2vw, 6.25rem);
+  font-size: clamp(2.35rem, 0.4rem + 5.8vw, 5.85rem);
   line-height: 1.12;
-  letter-spacing: -0.045em;
+  letter-spacing: 0.045em;
   color: var(--text-on-ink);
-  /* Italic “De” overhang clearance */
-  padding-inline-end: 0.14em;
   box-sizing: border-box;
 }
 
 @supports (font-size: 1cqi) {
   .hero-name {
     /* Scale to the name column — monumental but always fits one line */
-    font-size: clamp(2.5rem, 17.5cqi, 6.25rem);
+    font-size: clamp(2.35rem, 16.2cqi, 5.85rem);
   }
 }
 
 .hero-name .accent {
-  color: var(--champagne);
-  font-style: italic;
-  font-weight: 400;
-  padding-inline-end: 0.04em;
+  color: var(--platinum);
+  font-style: normal;
+  font-weight: 550;
 }
 
 .hero-rule {
@@ -1507,6 +1514,17 @@ html.reduce-motion .mgmt-cert-card:hover {
     grid-template-columns: 4rem 1fr;
     gap: 2rem;
   }
+
+  .work-piece-demo {
+    grid-template-columns: 4rem minmax(0, 1fr) minmax(220px, 38%);
+    align-items: start;
+  }
+}
+
+@media (max-width: 719px) {
+  .work-piece-demo .work-demo {
+    grid-column: 1 / -1;
+  }
 }
 
 .work-num {
@@ -1515,6 +1533,23 @@ html.reduce-motion .mgmt-cert-card:hover {
   font-weight: 700;
   font-size: 1.25rem;
   color: var(--oxblood);
+}
+
+.work-demo {
+  margin: 0;
+  border-radius: 2px;
+  overflow: hidden;
+  border: 1px solid rgba(92, 24, 36, 0.12);
+  background: rgba(20, 16, 14, 0.04);
+  aspect-ratio: 16 / 10;
+}
+
+.work-demo-media {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
 }
 
 .work-piece h3 {
@@ -2005,6 +2040,32 @@ body:has(button:hover) .cursor-ring {
 
 .work-piece:hover {
   background: rgba(92, 24, 36, 0.04);
+  transform: translateY(-3px);
+}
+
+html.reduce-motion .work-piece,
+html.reduce-motion .work-piece:hover {
+  transition: none;
+  transform: none;
+}
+
+.work-piece-demo .work-demo {
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.35s ease,
+    box-shadow 0.45s ease;
+}
+
+.work-piece-demo:hover .work-demo {
+  transform: translateY(-2px);
+  border-color: rgba(201, 169, 106, 0.45);
+  box-shadow: 0 12px 28px rgba(20, 16, 14, 0.08);
+}
+
+html.reduce-motion .work-piece-demo .work-demo,
+html.reduce-motion .work-piece-demo:hover .work-demo {
+  transition: none;
+  transform: none;
+  box-shadow: none;
 }
 
 .work-piece h3 a {

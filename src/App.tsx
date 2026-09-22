@@ -62,6 +62,68 @@ function ExternalLink({
   );
 }
 
+/** GIF or muted looping video for Selected work cards — pauses off-screen; respects reduced motion. */
+function WorkDemoMedia({
+  demo,
+  alt,
+  reducedMotion,
+}: {
+  demo: { src: string; kind: "gif" | "video"; poster?: string };
+  alt: string;
+  reducedMotion: boolean;
+}) {
+  const rootRef = useRef<HTMLDivElement | null>(null);
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+  const [inView, setInView] = useState(false);
+
+  useEffect(() => {
+    const el = rootRef.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      ([entry]) => setInView(entry.isIntersecting && entry.intersectionRatio > 0.15),
+      { threshold: [0, 0.15, 0.4], rootMargin: "40px 0px" },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const v = videoRef.current;
+    if (!v || demo.kind !== "video") return;
+    if (reducedMotion || !inView) {
+      v.pause();
+    } else {
+      void v.play().catch(() => {});
+    }
+  }, [inView, reducedMotion, demo.kind]);
+
+  const still = demo.poster || (demo.kind === "gif" ? demo.src : undefined);
+  const showMotion = !reducedMotion && inView;
+
+  return (
+    <div ref={rootRef} className="work-demo">
+      {demo.kind === "video" ? (
+        <video
+          ref={videoRef}
+          className="work-demo-media"
+          src={demo.src}
+          poster={demo.poster}
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          autoPlay={!reducedMotion}
+          aria-label={alt}
+        />
+      ) : showMotion ? (
+        <img className="work-demo-media" src={demo.src} alt={alt} loading="lazy" />
+      ) : still ? (
+        <img className="work-demo-media" src={still} alt={alt} loading="lazy" />
+      ) : null}
+    </div>
+  );
+}
+
 const sectionIds = sections.map((s) => s.id);
 
 function sectionById(id: string) {
@@ -219,7 +281,12 @@ export default function App() {
             <span className="wordmark-mark" aria-hidden="true">
               {ui.footerMark}
             </span>
-            <span className="wordmark-name">{profile.name}</span>
+            <span className="wordmark-name">
+              {profile.name.split(" ")[0]}{" "}
+              <span className="accent">
+                {profile.name.split(" ").slice(1).join(" ")}
+              </span>
+            </span>
           </a>
 
           <nav className="desktop-nav" aria-label="Primary">
@@ -718,14 +785,14 @@ export default function App() {
                 <Reveal
                   as="article"
                   key={p.url}
-                  className="work-piece"
+                  className={p.demo ? "work-piece work-piece-demo" : "work-piece"}
                   reducedMotion={reducedMotion}
                   delay={i * 55}
                 >
                   <p className="work-num" aria-hidden="true">
                     {String(i + 1).padStart(2, "0")}
                   </p>
-                  <div>
+                  <div className="work-body">
                     <h3>
                       <ExternalLink href={p.url}>{p.name}</ExternalLink>
                     </h3>
@@ -738,6 +805,13 @@ export default function App() {
                       ) : null}
                     </div>
                   </div>
+                  {p.demo ? (
+                    <WorkDemoMedia
+                      demo={p.demo}
+                      alt={`${p.name} demo`}
+                      reducedMotion={reducedMotion}
+                    />
+                  ) : null}
                 </Reveal>
               ))}
             </div>

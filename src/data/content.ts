@@ -42,6 +42,8 @@
  *   experience[]                       → add a role object, or delete one to remove
  *   skills[]                           → skill groups
  *   projects[]                         → selected GitHub work
+ *     To add demo media: drop a file in public/work/ (gif or mp4), set project.demo
+ *       { src, kind: "gif"|"video", poster? } — poster recommended for reduced-motion / off-screen
  *   writing[]                          → Medium pieces
  *   mentoring.*                        → Topmate services + testimonials
  *
@@ -557,6 +559,13 @@ export const certifications: {
   /** AI / generative AI / agents — real certificate artwork */
   ai: [
     {
+      name: "Google AI Essentials",
+      issuer: "Google (via Coursera)",
+      issued: "2025-07-10",
+      image: "/certificates/google-ai-essentials.jpg",
+      url: "https://www.coursera.org/account/accomplishments/specialization/R9TFMISLM5S5",
+    },
+    {
       name: "Agentic AI",
       issuer: "DeepLearning.AI",
       issued: "2026-04-21",
@@ -638,12 +647,21 @@ export const certifications: {
   resumeOnly: [],
 };
 
+export type ProjectDemo = {
+  /** Path under public/, e.g. /work/demo.gif */
+  src: string;
+  kind: "gif" | "video";
+  /** Still frame for reduced-motion and off-screen pause */
+  poster?: string;
+};
+
 export type Project = {
   name: string;
   description: string;
   url: string;
   homepage?: string;
   stack?: string;
+  demo?: ProjectDemo;
 };
 
 export const projects: Project[] = [
@@ -653,6 +671,11 @@ export const projects: Project[] = [
       "Applied-AI account-risk engine that fuses support, telemetry, and adoption signals into an explainable 0–100 escalation-risk score, with a server-side Claude advisory layer. Live demo on synthetic data.",
     url: "https://github.com/aritrade/enterprise-adoption-risk-analyzer",
     stack: "Python · FastAPI · Pydantic · APScheduler · Anthropic Claude · ChromaDB · Playwright",
+    demo: {
+      src: "/work/enterprise-adoption-risk-analyzer.gif",
+      kind: "gif",
+      poster: "/work/enterprise-adoption-risk-analyzer-poster.jpg",
+    },
   },
   {
     name: "Kintsugi Health OS",
@@ -661,6 +684,11 @@ export const projects: Project[] = [
     url: "https://github.com/aritrade/kintsugi-health-os",
     homepage: "https://kintsugi-health-os.vercel.app",
     stack: "Next.js 15 · Supabase · Claude · OpenAI",
+    demo: {
+      src: "/work/kintsugi-health-os.gif",
+      kind: "gif",
+      poster: "/work/kintsugi-health-os-poster.jpg",
+    },
   },
   {
     name: "Intimacy & Therapy Library",
@@ -669,6 +697,11 @@ export const projects: Project[] = [
     url: "https://github.com/aritrade/intimacy-and-sex-therapy-library",
     homepage: "https://intimacy-and-sex-therapy-library.vercel.app",
     stack: "Next.js · React · TypeScript · Tailwind · Postgres · pgvector",
+    demo: {
+      src: "/work/intimacy-therapy-library.mp4",
+      kind: "video",
+      poster: "/work/intimacy-therapy-library-poster.jpg",
+    },
   },
   {
     name: "AI Survival Score",
@@ -676,6 +709,11 @@ export const projects: Project[] = [
       "Paste a LinkedIn profile and get an AI career-displacement risk score in ~60s — six-dimension breakdown, AI-augmented headline, and a 6-month survival roadmap. Private and client-side.",
     url: "https://github.com/aritrade/ai-survival-score",
     stack: "LangGraph · multi-agent",
+    demo: {
+      src: "/work/ai-survival-score.gif",
+      kind: "gif",
+      poster: "/work/ai-survival-score-poster.jpg",
+    },
   },
   {
     name: "Video Nuggets",
@@ -683,6 +721,11 @@ export const projects: Project[] = [
       "Turn any document into a narrated, animated video lesson — moving diagrams, kinetic captions, and a source-grounded Q&A bot — with a real media pipeline.",
     url: "https://github.com/aritrade/video-nuggets",
     homepage: "https://video-nuggets.vercel.app",
+    demo: {
+      src: "/work/video-nuggets.gif",
+      kind: "gif",
+      poster: "/work/video-nuggets-poster.jpg",
+    },
   },
   {
     name: "ProductiveYou",
@@ -691,6 +734,11 @@ export const projects: Project[] = [
     url: "https://github.com/aritrade/productiveyou",
     homepage: "https://productiveyou.lovable.app",
     stack: "React · Vite · Supabase",
+    demo: {
+      src: "/work/productiveyou.gif",
+      kind: "gif",
+      poster: "/work/productiveyou-poster.jpg",
+    },
   },
 ];
 
