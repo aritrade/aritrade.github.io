@@ -855,24 +855,6 @@ export const gallery: GalleryItem[] = [
     aspect: "portrait",
   },
   {
-    src: "/gallery-veeam-tour.jpg",
-    alt: "Aritra De at Veeam on Tour",
-    label: "Veeam on Tour",
-    aspect: "portrait",
-  },
-  {
-    src: "/gallery-conference.jpg",
-    alt: "Aritra De at a conference",
-    label: "In the room",
-    aspect: "landscape",
-  },
-  {
-    src: "/gallery-veeam-sign.jpg",
-    alt: "Veeam on Tour sign at the Grand Ballroom",
-    label: "Veeam on Tour",
-    aspect: "landscape",
-  },
-  {
     src: "/gallery-nutanix-team.jpg",
     alt: "Aritra De with the Nutanix team",
     label: "Nutanix",
