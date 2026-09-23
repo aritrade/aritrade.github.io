@@ -71,7 +71,7 @@ export const profile = {
   /** GitHub public bio — verified */
   githubBio:
     "Strategic Customer Success Leader · AI Practitioner · Building agentic AI on nights and weekends",
-  email: "aritrajob79@gmail.com",
+  email: "business.aritrade@gmail.com",
   /** Visible format; tel: href uses digits only */
   phone: "+91 9147116011",
   phoneTel: "+919147116011",
